@@ -38,8 +38,8 @@ Route::get('/services', function () {
     return view('public.services');
 });
 
-Route::get('/doctors', function () {
-    return view('public.doctors');
+Route::get('/Tim', function () {
+    return view('public.Tim');
 });
 
 Route::get('/cp', function () {

@@ -47,7 +47,7 @@
   <!-- End Header -->
   <main id="main">
     @yield('content')
-    <!-- ======= Counts Section ======= -->
+    //<!-- ======= Counts Section ======= -->
     <section id="counts" class="counts">
       <div class="container">
 
@@ -303,7 +303,7 @@
         </div>
 
       </div>
-    </section><!-- End Testimonials Section -->
+    </section><!-- End Testimonials Section -->//
 
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
