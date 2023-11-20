@@ -22,12 +22,24 @@ Route::get('/', function () {
     return view('public.home');
 });
 
+Route::get('/home', function () {
+    return view('public.home');
+});
+
 Route::get('/about', function () {
     return view('public.about');
 });
 
+Route::get('/departments', function () {
+    return view('public.departments');
+});
+
 Route::get('/services', function () {
     return view('public.services');
+});
+
+Route::get('/doctors', function () {
+    return view('public.doctors');
 });
 
 Route::get('/cp', function () {
