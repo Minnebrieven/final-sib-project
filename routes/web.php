@@ -30,10 +30,6 @@ Route::get('/about', function () {
     return view('public.about');
 });
 
-Route::get('/departments', function () {
-    return view('public.departments');
-});
-
 Route::get('/services', function () {
     return view('public.services');
 });
@@ -42,6 +38,6 @@ Route::get('/Tim', function () {
     return view('public.Tim');
 });
 
-Route::get('/cp', function () {
+Route::get('/contact', function () {
     return view('public.contact');
 });
