@@ -1,7 +1,6 @@
-<header id="header" class="fixed-top">
+<header id="header" class="top">
     <div class="container d-flex align-items-center">
-
-        <h1 class="logo me-auto"><a href="index.html">Medilab</a></h1>
+        <h1 class="logo me-auto"><a href="index.html">Literasi Sampah</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -9,7 +8,7 @@
             <ul>
                 <li><a class="nav-link scrollto active" href="{{ ('/home') }}">Home</a></li>
                 <li><a class="nav-link scrollto" href="{{ ('/about') }}">About</a></li>
-                <li><a class="nav-link scrollto" href="{{ ('/services') }}">Services</a></li>
+                <li><a class="nav-link scrollto" href="{{ ('/services') }}">Menu</a></li>
                 <li><a class="nav-link scrollto" href="{{ ('/departments') }}">Departments</a></li>
                 <li><a class="nav-link scrollto" href="{{ ('/Tim') }}">Tim</a></li>
                 <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
