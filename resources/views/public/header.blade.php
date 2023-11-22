@@ -9,7 +9,7 @@
                 <li><a class="nav-link scrollto active" href="{{ ('/home') }}">Home</a></li>
                 <li><a class="nav-link scrollto" href="{{ ('/about') }}">About</a></li>
                 <li><a class="nav-link scrollto" href="{{ ('/Tim') }}">Tim</a></li>
-                <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a href="#"><span>Menu</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="#">Penjualan</a></li>
                         <li><a href="#">Berita</a></li>
