@@ -1,7 +1,7 @@
 @extends('public.index')
 @section('content')
-<!-- ======= About Section ======= -->
-<section id="about" class="about">
+<!-- ======= Mater Section ======= -->
+<section id="materi" class="materi">
     <div class="container-fluid">
 
         <div class="row">
@@ -14,13 +14,13 @@
 
                 <h3>Jenis Sampah</h3>
                 <div class="icon-box">
-                    <div class="icon"><i class="bx bx-fingerprint"></i></div>
+                    <div class="icon"><i class="bx bx-atom"></i></div>
                     <h4 class="title"><a href="">sampah organik</a></h4>
                     <p class="description">jenis sampah yang berasal dari sisa-sisa bahan organik, seperti sisa makanan, dedaunan, ranting, dan bahan organik lainnya yang dapat membusuk. Sampah organik dapat menjadi sumber potensi masalah lingkungan jika tidak dikelola dengan benar.</p>
                 </div>
 
                 <div class="icon-box">
-                    <div class="icon"><i class="bx bx-gift"></i></div>
+                    <div class="icon"><i class="bx bx-atom"></i></div>
                     <h4 class="title"><a href="">Pengolahan Sampah Organik</a></h4>
                     <p class="description"><b>Pengomposan:</b> Sampah organik dapat diolah melalui proses pengomposan, di mana bahan organik tersebut diuraikan oleh mikroorganisme menjadi humus yang dapat digunakan sebagai pupuk.</p>
                     <p class="description"><b>Penggilingan:</b> Beberapa daerah menggunakan penggilingan untuk menghancurkan sampah organik menjadi potongan-potongan kecil, mempercepat proses penguraian.</p>
@@ -31,9 +31,9 @@
         </div>
 
     </div>
-
-    </br>
-
+</section>
+</br>
+<section id="materi2" class="materi2">
     <div class="container-fluid">
 
         <div class="row">
@@ -71,33 +71,5 @@
 
     </div>
 </section>
-<!-- End About Section -->
-<section id="services" class="services">
-    <div class="container">
-
-        <div class="section-title">
-            <h2>Services</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-6 col-md-6 d-flex align-items-stretch">
-                <div class="icon-box">
-                    <div class="icon"><i class="fas fa-heartbeat"></i></div>
-                    <h4><a href="">Penjualan</a></h4>
-                    <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                </div>
-            </div>
-
-            <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                <div class="icon-box">
-                    <div class="icon"><i class="fas fa-pills"></i></div>
-                    <h4><a href="">Berita</a></h4>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section><!-- End Services Section -->
+<!-- End materi Section -->
 @endsection

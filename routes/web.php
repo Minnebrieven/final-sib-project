@@ -26,8 +26,12 @@ Route::get('/home', function () {
     return view('public.home');
 });
 
-Route::get('/about', function () {
-    return view('public.about');
+Route::get('/menu', function () {
+    return view('public.menu');
+});
+
+Route::get('/materi', function () {
+    return view('public.materi');
 });
 
 Route::get('/services', function () {

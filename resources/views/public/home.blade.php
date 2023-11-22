@@ -23,7 +23,7 @@
                         Dapat dikatakan sampah adalah sesuatu yang tidak diinginkan oleh manusia setelah proses dan penggunaannya berakhir..
                     </p>
                     <div class="text-center">
-                        <a href="about" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                        <a href="materi" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
