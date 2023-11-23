@@ -1,7 +1,7 @@
 @extends('public.index')
 @section('content')
 <!-- ======= Mater Section ======= -->
-<section id="materi" class="materi">
+<section id="organik" class="organik">
     <div class="container-fluid">
 
         <div class="row">
@@ -9,9 +9,6 @@
             </div>
 
             <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-                <h3>Sampah</h3>
-                <p>Sampah merupakan permasalahan yang sangat umum yang terjadi di masyarakat global. Sampah merupakan material sisa hasil aktivitas yang dibuang sebagai hasil dari proses produksi, baik itu dalam industri maupun rumah tangga. Dapat dikatakan sampah adalah sesuatu yang tidak diinginkan oleh manusia setelah proses dan penggunaannya berakhir.</p>
-
                 <h3>Jenis Sampah</h3>
                 <div class="icon-box">
                     <div class="icon"><i class="bx bx-atom"></i></div>
@@ -27,13 +24,19 @@
                     <p class="description"><b>Biogas:</b> Sampah organik juga dapat dimasukkan ke dalam digester biogas untuk menghasilkan biogas yang dapat digunakan sebagai sumber energi.</p>
                 </div>
 
+                <div class="icon-box">
+                    <div class="icon"><i class="bx bx-atom"></i></div>
+                    <h4 class="title"><a href="">Kampanye Pengurangan Pemborosan Makanan</a></h4>
+                    <p class="description">Makanan yang dibuang merupakan sebagian besar dari sampah organik. Kampanye untuk mengurangi pemborosan makanan dapat membantu mengurangi jumlah sampah organik yang dihasilkan.</p>
+                </div>
+
             </div>
         </div>
 
     </div>
 </section>
 </br>
-<section id="materi2" class="materi2">
+<section id="organik2" class="organik2">
     <div class="container-fluid">
 
         <div class="row">
@@ -71,5 +74,5 @@
 
     </div>
 </section>
-<!-- End materi Section -->
+<!-- End organik Section -->
 @endsection

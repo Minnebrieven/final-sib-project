@@ -6,7 +6,7 @@
 
         <div class="section-title">
             <h2>Tim Project</h2>
-            <p>Tim kami adalah kelompok orang yang bekerja sama untuk meningkatkan pemahaman masyarakat tentang pentingnya mengelola sampah dengan bijak. Tujuan utama dari project ini adalah untuk meningkatkan tingkat literasi atau pemahaman masyarakat tentang sampah, termasuk cara memilah, mendaur ulang, dan mengelola sampah dengan cara yang ramah lingkungan..</p>
+            <p>Proyek website literasi sampah memerlukan kolaborasi antara berbagai peran, termasuk Project Manager, Frontend Developer, dan Backend Developer, untuk mencapai tujuan tertentu dalam penyampaian informasi literasi sampah kepada pengguna.</p>
         </div>
 
         <div class="row">
@@ -17,7 +17,10 @@
                     <div class="member-info">
                         <h4>Muhammad Jaisy</h4>
                         <span>Project Manager</span>
-                        <p>Project Manager adalah individu yang bertanggung jawab atas perencanaan, pengorganisasian, pelaksanaan, dan pengendalian project literasi sampah ini.</p>
+                        <p><b>Penyusunan Rencana Konten: </b> Merencanakan dan mengatur konten literasi sampah yang akan disajikan di website, termasuk artikel, panduan, infografis, dan sumber daya lainnya.</p>
+                        <p><b>Koordinasi Tim: </b>Mengatur pertemuan tim, memastikan pemahaman yang jelas tentang ruang lingkup proyek, dan memotivasi anggota tim untuk mencapai tujuan literasi sampah.</p>
+                        <p><b>Pemantauan Kinerja: </b>Mengukur kemajuan proyek, menilai pencapaian target, dan melakukan penyesuaian jika diperlukan.</p>
+                        <p><b>Komunikasi dengan Pihak Terkait: </b>Berkomunikasi dengan para pemangku kepentingan, seperti organisasi lingkungan, pemerintah, atau mitra lainnya, untuk memastikan dukungan dan pemahaman yang tepat terhadap inisiatif literasi sampah.</p>
                         <div class="social">
                             <a href=""><i class="ri-twitter-fill"></i></a>
                             <a href=""><i class="ri-facebook-fill"></i></a>
@@ -32,9 +35,12 @@
                 <div class="member d-flex align-items-start">
                     <div class="pic"><img src="public/assets/img/doctors/doctors-2.jpg" class="img-fluid" alt=""></div>
                     <div class="member-info">
-                        <h4>Moch Fikri Ramadhan</h4>
+                        <h4>Muarif Rizqy</h4>
                         <span>Frontend Devoloper</span>
-                        <p>Seorang "desainer tampilan" Literasi Sampah, yang menciptakan antarmuka aplikasi atau situs web dengan desain menarik, ramah pengguna, dan modern.</p>
+                        <p><b>Desain Antarmuka Pengguna: </b>sama dengan tim desain untuk menerjemahkan desain ke dalam antarmuka pengguna yang menarik dan mudah digunakan.</p>
+                        <p><b>Integrasi Konten: </b>Menyatukan konten literasi sampah ke dalam struktur antarmuka, memastikan navigasi yang intuitif.</p>
+                        <p><b>Responsif dan Kompatibilitas Cross-browser: </b> bahwa website dapat diakses dan bekerja dengan baik di berbagai perangkat dan browser.</p>
+                        <p><b>Animasi dan Interaktivitas:</b> Menambahkan elemen animasi dan interaktivitas untuk meningkatkan pengalaman pengguna.</p>
                         <div class="social">
                             <a href=""><i class="ri-twitter-fill"></i></a>
                             <a href=""><i class="ri-facebook-fill"></i></a>
@@ -49,9 +55,12 @@
                 <div class="member d-flex align-items-start">
                     <div class="pic"><img src="public/assets/img/doctors/doctors-3.jpg" class="img-fluid" alt=""></div>
                     <div class="member-info">
-                        <h4>Adialfatih</h4>
-                        <span>Frontend Devoloper</span>
-                        <p>Membuat Desain literasi sampah terlihat keren dan mudah dimengerti agar dapat menginspirasi pengguna akan pentingnya sampah.</p>
+                        <h4>Izzudin Muktar</h4>
+                        <span>Backend Devoloper</span>
+                        <p><b>Pengelolaan Database: </b> dan mengelola database untuk menyimpan informasi terkait literasi sampah.</p>
+                        <p><b>Pemrograman Fungsionalitas: </b> kode backend untuk fungsionalitas seperti pencarian, filter, dan pengelolaan konten.</p>
+                        <p><b>Keamanan: </b> keamanan data dan menerapkan praktik keamanan untuk melindungi informasi sensitif.</p>
+                        <p><b>Optimisasi Kinerja Backend: </b> kinerja backend yang optimal untuk menangani lalu lintas pengguna dan permintaan.</p>
                         <div class="social">
                             <a href=""><i class="ri-twitter-fill"></i></a>
                             <a href=""><i class="ri-facebook-fill"></i></a>
@@ -83,9 +92,12 @@
                 <div class="member d-flex align-items-start">
                     <div class="pic"><img src="public/assets/img/doctors/doctors-2.jpg" class="img-fluid" alt=""></div>
                     <div class="member-info">
-                        <h4>Izzudin Muktar</h4>
-                        <span>Backend Devoloper</span>
-                        <p>Mengelola data, logika bisnis, dan fungsionalitas inti yang memastikan informasi literasi sampah tersedia dan terkelola secara efisien. memastikan bahwa platform tersebut dapat menyampaikan informasi secara tepat dan andal.</p>
+                        <h4>Moch Fikri</h4>
+                        <span>Documentation</span>
+                        <p><b>Deskripsi Proyek: </b> awal yang menjelaskan visi, misi, dan tujuan proyek literasi sampah.</p>
+                        <p><b>Ruang Lingkup Proyek: </b> batasan dan cakupan proyek, termasuk fitur-fitur utama dan fungsionalitas yang diinginkan.</p>
+                        <p><b>Peta Alur: </b> diagram alur atau peta situs untuk memvisualisasikan struktur dan navigasi website.</p>
+                        <p><b>Kebijakan Privasi dan Keamanan: </b> yang menjelaskan bagaimana data pengguna dikelola dan dilindungi.</p>
                         <div class="social">
                             <a href=""><i class="ri-twitter-fill"></i></a>
                             <a href=""><i class="ri-facebook-fill"></i></a>

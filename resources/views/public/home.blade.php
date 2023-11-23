@@ -3,9 +3,9 @@
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex align-items-center">
     <div class="container">
-        <h1>Welcome to ....</h1>
+        <h1>Welcome to Ruang Literasi Sampah</h1>
         <h2>Pelayanan penjualan sampah serta informasi-informasi tentang sampah.</h2>
-        <a href="#about" class="btn-get-started scrollto">Login</a>
+        <a href="#about" class="btn-get-started scrollto">Register</a>
     </div>
 </section><!-- End Hero -->
 
@@ -23,7 +23,7 @@
                         Dapat dikatakan sampah adalah sesuatu yang tidak diinginkan oleh manusia setelah proses dan penggunaannya berakhir..
                     </p>
                     <div class="text-center">
-                        <a href="materi" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                        <a href="menu" class="more-btn">Lanjut Baca <i class="bx bx-chevron-right"></i></a>
                     </div>
                 </div>
             </div>

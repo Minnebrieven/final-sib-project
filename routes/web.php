@@ -30,8 +30,12 @@ Route::get('/menu', function () {
     return view('public.menu');
 });
 
-Route::get('/materi', function () {
-    return view('public.materi');
+Route::get('/organik', function () {
+    return view('public.organik');
+});
+
+Route::get('/nonorganik', function () {
+    return view('public.nonorganik');
 });
 
 Route::get('/services', function () {

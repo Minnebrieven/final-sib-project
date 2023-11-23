@@ -719,26 +719,26 @@ section {
 }
 
 /*--------------------------------------------------------------
-# materi2
+# organik
 --------------------------------------------------------------*/
-.materi .icon-boxes h4 {
+.organik .icon-boxes h4 {
     font-size: 18px;
     color: #4b7dab;
     margin-bottom: 15px;
 }
 
-.materi .icon-boxes h3 {
+.organik .icon-boxes h3 {
     font-size: 28px;
     font-weight: 700;
     color: #2c4964;
     margin-bottom: 15px;
 }
 
-.materi .icon-box {
+.organik .icon-box {
     margin-top: 40px;
 }
 
-.materi .icon-box .icon {
+.organik .icon-box .icon {
     float: left;
     display: flex;
     align-items: center;
@@ -750,49 +750,49 @@ section {
     transition: 0.5s;
 }
 
-.materi .icon-box .icon i {
+.organik .icon-box .icon i {
     color: #1977cc;
     font-size: 32px;
 }
 
-.materi .icon-box:hover .icon {
+.organik .icon-box:hover .icon {
     background: #1977cc;
     border-color: #1977cc;
 }
 
-.materi .icon-box:hover .icon i {
+.organik .icon-box:hover .icon i {
     color: #fff;
 }
 
-.materi .icon-box .title {
+.organik .icon-box .title {
     margin-left: 85px;
     font-weight: 700;
     margin-bottom: 10px;
     font-size: 18px;
 }
 
-.materi .icon-box .title a {
+.organik .icon-box .title a {
     color: #343a40;
     transition: 0.3s;
 }
 
-.materi .icon-box .title a:hover {
+.organik .icon-box .title a:hover {
     color: #1977cc;
 }
 
-.materi .icon-box .description {
+.organik .icon-box .description {
     margin-left: 85px;
     line-height: 24px;
     font-size: 14px;
 }
 
-.materi .video-box {
+.organik .video-box {
     background: url("../img/about.png") center center no-repeat;
     background-size: cover;
     min-height: 500px;
 }
 
-.materi .play-btn {
+.organik .play-btn {
     width: 94px;
     height: 94px;
     background: radial-gradient(#1977cc 50%, rgba(25, 119, 204, 0.4) 52%);
@@ -804,7 +804,7 @@ section {
     overflow: hidden;
 }
 
-.materi .play-btn::after {
+.organik .play-btn::after {
     content: "";
     position: absolute;
     left: 50%;
@@ -819,7 +819,7 @@ section {
     transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
-.materi .play-btn::before {
+.organik .play-btn::before {
     content: "";
     position: absolute;
     width: 120px;
@@ -837,12 +837,12 @@ section {
     background: rgba(198, 16, 0, 0);
 }
 
-.materi .play-btn:hover::after {
+.organik .play-btn:hover::after {
     border-left: 15px solid #1977cc;
     transform: scale(20);
 }
 
-.materi .play-btn:hover::before {
+.organik .play-btn:hover::before {
     content: "";
     position: absolute;
     left: 50%;
@@ -859,24 +859,24 @@ section {
     border-radius: 0;
 }
 
-.materi2 .icon-boxes h4 {
+.organik2 .icon-boxes h4 {
     font-size: 18px;
     color: #4b7dab;
     margin-bottom: 15px;
 }
 
-.materi2 .icon-boxes h3 {
+.organik2 .icon-boxes h3 {
     font-size: 28px;
     font-weight: 700;
     color: #2c4964;
     margin-bottom: 15px;
 }
 
-.materi2 .icon-box {
+.organik2 .icon-box {
     margin-top: 40px;
 }
 
-.materi2 .icon-box .icon {
+.organik2 .icon-box .icon {
     float: left;
     display: flex;
     align-items: center;
@@ -888,49 +888,49 @@ section {
     transition: 0.5s;
 }
 
-.materi2 .icon-box .icon i {
+.organik2 .icon-box .icon i {
     color: #1977cc;
     font-size: 32px;
 }
 
-.materi2 .icon-box:hover .icon {
+.organik2 .icon-box:hover .icon {
     background: #1977cc;
     border-color: #1977cc;
 }
 
-.materi2 .icon-box:hover .icon i {
+.organik2 .icon-box:hover .icon i {
     color: #fff;
 }
 
-.materi2 .icon-box .title {
+.organik2 .icon-box .title {
     margin-left: 85px;
     font-weight: 700;
     margin-bottom: 10px;
     font-size: 18px;
 }
 
-.materi2 .icon-box .title a {
+.organik2 .icon-box .title a {
     color: #343a40;
     transition: 0.3s;
 }
 
-.materi2 .icon-box .title a:hover {
+.organik2 .icon-box .title a:hover {
     color: #1977cc;
 }
 
-.materi2 .icon-box .description {
+.organik2 .icon-box .description {
     margin-left: 85px;
     line-height: 24px;
     font-size: 14px;
 }
 
-.materi2 .video-box {
+.organik2 .video-box {
     background: url("../img/about2.png") center center no-repeat;
     background-size: cover;
     min-height: 500px;
 }
 
-.materi2 .play-btn {
+.organik2 .play-btn {
     width: 94px;
     height: 94px;
     background: radial-gradient(#1977cc 50%, rgba(25, 119, 204, 0.4) 52%);
@@ -942,7 +942,7 @@ section {
     overflow: hidden;
 }
 
-.materi2 .play-btn::after {
+.organik2 .play-btn::after {
     content: "";
     position: absolute;
     left: 50%;
@@ -957,7 +957,7 @@ section {
     transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
-.materi2 .play-btn::before {
+.organik2 .play-btn::before {
     content: "";
     position: absolute;
     width: 120px;
@@ -975,12 +975,303 @@ section {
     background: rgba(198, 16, 0, 0);
 }
 
-.materi2 .play-btn:hover::after {
+.organik2 .play-btn:hover::after {
     border-left: 15px solid #1977cc;
     transform: scale(20);
 }
 
-.materi2 .play-btn:hover::before {
+.organik2 .play-btn:hover::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-40%) translateY(-50%);
+    width: 0;
+    height: 0;
+    border: none;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 15px solid #fff;
+    z-index: 200;
+    animation: none;
+    border-radius: 0;
+}
+
+@keyframes pulsate-btn {
+    0% {
+        transform: scale(0.6, 0.6);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1, 1);
+        opacity: 0;
+    }
+}
+
+/*--------------------------------------------------------------
+# organik
+--------------------------------------------------------------*/
+.nonorganik .icon-boxes h4 {
+    font-size: 18px;
+    color: #4b7dab;
+    margin-bottom: 15px;
+}
+
+.nonorganik .icon-boxes h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c4964;
+    margin-bottom: 15px;
+}
+
+.nonorganik .icon-box {
+    margin-top: 40px;
+}
+
+.nonorganik .icon-box .icon {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border: 2px solid #8dc2f1;
+    border-radius: 50px;
+    transition: 0.5s;
+}
+
+.nonorganik .icon-box .icon i {
+    color: #1977cc;
+    font-size: 32px;
+}
+
+.nonorganik .icon-box:hover .icon {
+    background: #1977cc;
+    border-color: #1977cc;
+}
+
+.nonorganik .icon-box:hover .icon i {
+    color: #fff;
+}
+
+.nonorganik .icon-box .title {
+    margin-left: 85px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.nonorganik .icon-box .title a {
+    color: #343a40;
+    transition: 0.3s;
+}
+
+.nonorganik .icon-box .title a:hover {
+    color: #1977cc;
+}
+
+.nonorganik .icon-box .description {
+    margin-left: 85px;
+    line-height: 24px;
+    font-size: 14px;
+}
+
+.nonorganik .video-box {
+    background: url("../img/nonorganik.png") center center no-repeat;
+    background-size: cover;
+    min-height: 500px;
+}
+
+.nonorganik .play-btn {
+    width: 94px;
+    height: 94px;
+    background: radial-gradient(#1977cc 50%, rgba(25, 119, 204, 0.4) 52%);
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    left: calc(50% - 47px);
+    top: calc(50% - 47px);
+    overflow: hidden;
+}
+
+.nonorganik .play-btn::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-40%) translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 15px solid #fff;
+    z-index: 100;
+    transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.nonorganik .play-btn::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    animation-delay: 0s;
+    animation: pulsate-btn 2s;
+    animation-direction: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps;
+    opacity: 1;
+    border-radius: 50%;
+    border: 5px solid rgba(25, 119, 204, 0.7);
+    top: -15%;
+    left: -15%;
+    background: rgba(198, 16, 0, 0);
+}
+
+.nonorganik .play-btn:hover::after {
+    border-left: 15px solid #1977cc;
+    transform: scale(20);
+}
+
+.nonorganik .play-btn:hover::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-40%) translateY(-50%);
+    width: 0;
+    height: 0;
+    border: none;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 15px solid #fff;
+    z-index: 200;
+    animation: none;
+    border-radius: 0;
+}
+
+.nonorganik2 .icon-boxes h4 {
+    font-size: 18px;
+    color: #4b7dab;
+    margin-bottom: 15px;
+}
+
+.nonorganik2 .icon-boxes h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c4964;
+    margin-bottom: 15px;
+}
+
+.nonorganik2 .icon-box {
+    margin-top: 40px;
+}
+
+.nonorganik2 .icon-box .icon {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border: 2px solid #8dc2f1;
+    border-radius: 50px;
+    transition: 0.5s;
+}
+
+.nonorganik2 .icon-box .icon i {
+    color: #1977cc;
+    font-size: 32px;
+}
+
+.nonorganik2 .icon-box:hover .icon {
+    background: #1977cc;
+    border-color: #1977cc;
+}
+
+.nonorganik2 .icon-box:hover .icon i {
+    color: #fff;
+}
+
+.nonorganik2 .icon-box .title {
+    margin-left: 85px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.nonorganik2 .icon-box .title a {
+    color: #343a40;
+    transition: 0.3s;
+}
+
+.nonorganik2 .icon-box .title a:hover {
+    color: #1977cc;
+}
+
+.nonorganik2 .icon-box .description {
+    margin-left: 85px;
+    line-height: 24px;
+    font-size: 14px;
+}
+
+.nonorganik2 .video-box {
+    background: url("../img/nonorganik2.png") center center no-repeat;
+    background-size: cover;
+    min-height: 500px;
+}
+
+.nonorganik2 .play-btn {
+    width: 94px;
+    height: 94px;
+    background: radial-gradient(#1977cc 50%, rgba(25, 119, 204, 0.4) 52%);
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    left: calc(50% - 47px);
+    top: calc(50% - 47px);
+    overflow: hidden;
+}
+
+.nonorganik2 .play-btn::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-40%) translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 15px solid #fff;
+    z-index: 100;
+    transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.nonorganik2 .play-btn::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    animation-delay: 0s;
+    animation: pulsate-btn 2s;
+    animation-direction: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps;
+    opacity: 1;
+    border-radius: 50%;
+    border: 5px solid rgba(25, 119, 204, 0.7);
+    top: -15%;
+    left: -15%;
+    background: rgba(198, 16, 0, 0);
+}
+
+.nonorganik2 .play-btn:hover::after {
+    border-left: 15px solid #1977cc;
+    transform: scale(20);
+}
+
+.nonorganik2 .play-btn:hover::before {
     content: "";
     position: absolute;
     left: 50%;
