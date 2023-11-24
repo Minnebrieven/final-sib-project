@@ -75,9 +75,12 @@
                 <div class="member d-flex align-items-start">
                     <div class="pic"><img src="public/assets/img/doctors/doctors-4.jpg" class="img-fluid" alt=""></div>
                     <div class="member-info">
-                        <h4>Muarif Rizqy</h4>
-                        <span>Backend Devoloper</span>
-                        <p>Seorang Backend Developer Literasi Sampah yang bertanggung jawab untuk membangun dan menjaga bagian "belakang layar" dari aplikasi atau situs web literasi sampah.</p>
+                        <h4>Adiaalfatih</h4>
+                        <span>Frontend Devoloper</span>
+                        <p><b>Desain Antarmuka Pengguna: </b>sama dengan tim desain untuk menerjemahkan desain ke dalam antarmuka pengguna yang menarik dan mudah digunakan.</p>
+                        <p><b>Integrasi Konten: </b>Menyatukan konten literasi sampah ke dalam struktur antarmuka, memastikan navigasi yang intuitif.</p>
+                        <p><b>Responsif dan Kompatibilitas Cross-browser: </b> bahwa website dapat diakses dan bekerja dengan baik di berbagai perangkat dan browser.</p>
+                        <p><b>Animasi dan Interaktivitas:</b> Menambahkan elemen animasi dan interaktivitas untuk meningkatkan pengalaman pengguna.</p>
                         <div class="social">
                             <a href=""><i class="ri-twitter-fill"></i></a>
                             <a href=""><i class="ri-facebook-fill"></i></a>
