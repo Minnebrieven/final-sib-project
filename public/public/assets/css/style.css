@@ -163,11 +163,12 @@ h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
+    position: sticky;
     background: #fff;
     transition: all 0.5s;
     z-index: 997;
-    padding: 15px 0;
-    top: 40px;
+    padding: 10px 0;
+    top: 0px;
     box-shadow: 0px 2px 15px rgba(25, 119, 204, 0.1);
 }
 
@@ -463,7 +464,7 @@ h6 {
 #hero {
     width: 100%;
     height: 90vh;
-    background: url("../img/hero-bg.png") top center;
+    background: url("../img/bg.png") top center;
     background-size: cover;
     margin-bottom: -200px;
 }
@@ -787,7 +788,7 @@ section {
 }
 
 .organik .video-box {
-    background: url("../img/about.png") center center no-repeat;
+    background: url("../img/organik1.png") center center no-repeat;
     background-size: cover;
     min-height: 500px;
 }
@@ -925,7 +926,7 @@ section {
 }
 
 .organik2 .video-box {
-    background: url("../img/about2.png") center center no-repeat;
+    background: url("../img/organik2.png") center center no-repeat;
     background-size: cover;
     min-height: 500px;
 }
@@ -1078,7 +1079,7 @@ section {
 }
 
 .nonorganik .video-box {
-    background: url("../img/nonorganik.png") center center no-repeat;
+    background: url("../img/nonorganik1.png") center center no-repeat;
     background-size: cover;
     min-height: 500px;
 }

@@ -11,7 +11,7 @@
                 <li><a class="nav-link scrollto" href="{{ ('/Tim') }}">Tim</a></li>
                 <li class="dropdown"><a href="#"><span>Menu</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="{{route('transaksi.create')}}">Jual/Beli Sampah</a></li>
+                        <li><a href="#">Penjualan</a></li>
                         <li><a href="#">Berita</a></li>
                     </ul>
                 </li>
@@ -19,8 +19,8 @@
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
-
-        <a href="{{ ('/login') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Log</span> in</a>
+        <!-- <a href="private/index.blade.php" class="appointment-btn scrollto"><span class="d-none d-md-inline">Log</span> in</a> -->
+        <a href="{{ url('/dashboard') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Log</span> in</a>
 
     </div>
 </header><!-- End Header -->

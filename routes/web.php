@@ -22,13 +22,13 @@ use App\Http\Controllers\UserController;
 */
 
 
-Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('/table', function () {
     return view('private.table');
 })->middleware('auth');
 
-Route::resource('/user',UserController::class)->middleware('peran:admin');
+Route::resource('/user', UserController::class)->middleware('peran:admin');
 
 Route::get('/access-denied', function () {
     return view('private.access_denied');
@@ -57,9 +57,9 @@ Route::resource('/metode_pembayaran', MetodePembayaranController::class)->middle
 });
 */
 
- Route::get('/', function () {
-     return view('public.home');
- });
+Route::get('/', function () {
+    return view('public.home');
+});
 
 Route::get('/home', function () {
     return view('public.home');

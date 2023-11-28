@@ -1,7 +1,7 @@
 @extends('private.index')
 @section('content')
 @php
-$ar_judul = ['NO','KATEGORI BERITA','AUTHOR','JUDUL','LINK','DESKRIPSI','TANGGAL','FOTO','ACTION'];
+$ar_judul = ['NO','Kategori Berita','AUTHOR','JUDUL','LINK','DESKRIPSI','TANGGAL','FOTO','ACTION'];
 $no = 1;
 @endphp
 <h3>Daftar Berita</h3>
@@ -9,14 +9,10 @@ $no = 1;
 <div class="row">
     <div class="col">
         <a href="{{ route('berita.create') }}" class="btn btn-primary" title="Tambah Data">
-            <i class="bi bi-clipboard-plus"></i>
-        </a>
-        <a href="{{ url (('/berita-pdf')) }}" class="btn btn-danger" title="Export to PDF">
-	        <i class="bi bi-file-earmark-pdf"></i>
+            <i class="bi bi-clipboard-plus"></i> Tambah
         </a>
     </div>
 </div>
-
 <br /><br />
 <table class="table table-striped">
     <thead>
