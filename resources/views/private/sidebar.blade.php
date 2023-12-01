@@ -17,6 +17,7 @@
                         </div>
                     </a>
                 </li>
+                
                 <li class="nav-item nav-category"><span class="nav-link">Data</span></li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/berita') }}">
@@ -57,6 +58,14 @@
                         <i class="icon-screen-desktop menu-icon"></i>
                     </a>
                 </li>
+                @if(Auth::user()->role == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ url('/user') }}">
+                        <i class="bi bi-person"></i>
+                            <span>Kelola User</span>
+                    </a>
+                </li>
+                @endif
                     <div class="collapse" id="auth">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
