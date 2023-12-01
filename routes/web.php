@@ -8,6 +8,8 @@ use App\Http\Controllers\KategoriBeritaController;
 use App\Http\Controllers\PenjualController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,20 +21,30 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/', function () {
+    return view('private.dashboard');
+});
+
+Route::get('/dashboard', function () {
+    return view('private.dashboard');
+});
 
 Route::get('/table', function () {
     return view('private.table');
-});
+})->middleware('auth');
 
+Route::resource('/user',UserController::class)->middleware('peran:admin');
 
+Route::get('/access-denied', function () {
+    return view('private.access_denied');
+})->middleware('auth');
 
-Route::resource('/berita', BeritaController::class);
-Route::resource('/datatransaksi', DataTransaksiController::class);
-Route::resource('/jenissampah', JenisSampahController::class);
-Route::resource('/kategoriberita', KategoriBeritaController::class);
-Route::resource('/penjual', PenjualController::class);
-Route::resource('/transaksi', TransaksiController::class);
+Route::resource('/berita', BeritaController::class)->middleware('peran:manager-staff');
+Route::resource('/datatransaksi', DataTransaksiController::class)->middleware('peran:manager-staff');
+Route::resource('/jenissampah', JenisSampahController::class)->middleware('peran:manager-staff');
+Route::resource('/kategoriberita', KategoriBeritaController::class)->middleware('peran:manager-staff');
+Route::resource('/penjual', PenjualController::class)->middleware('peran:manager-staff');
+Route::resource('/transaksi', TransaksiController::class)->middleware('peran:manager-staff');
 
 
 
@@ -65,6 +77,10 @@ Route::get('/services', function () {
     return view('public.services');
 });
 
+Route::get('/after-register', function () {
+    return view('public.after_register');
+});
+
 Route::get('/Tim', function () {
     return view('public.Tim');
 });
@@ -72,3 +88,7 @@ Route::get('/Tim', function () {
 Route::get('/contact', function () {
     return view('public.contact');
 });
+
+Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
