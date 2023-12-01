@@ -19,7 +19,13 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/', function () {
+    return view('private.dashboard');
+});
+
+Route::get('/dashboard', function () {
+    return view('private.dashboard');
+});
 
 Route::get('/table', function () {
     return view('private.table');
