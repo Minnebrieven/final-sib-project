@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Models\JenisSampah;
+use App\Models\JenisSampah;
 use App\Models\Transaksi;
 use App\Models\DataTransaksi;
 use Illuminate\Support\Facades\DB; // jika pakai query builder
@@ -16,12 +16,20 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $arrayTitle = ['Nama Penjual', 'Jumlah', 'Tanggal Transaksi'];
-        $arrayTransaksi = DB::table('transaksi')->limit('5')->get(); // 5 latest transaction
-        $jumlahTransaksi = $totalHargaTransaksi = DB::table('data_transaksi')->count();
-        $totalHargaTransaksi = DB::table('data_transaksi')->sum('harga');
-        $totalSampah = DB::table('transaksi')->sum('jumlah');
-        return view('private.dashboard', compact('arrayTitle', 'arrayTransaksi', 'totalHargaTransaksi', 'jumlahTransaksi', 'totalSampah'));
+        $transactionData['title'] = ['Nama Penjual', 'Jumlah', 'Tanggal Transaksi'];
+        $transactionData['data'] = DB::table('transaksi')->limit('5')->get(); // 5 latest transaction
+        $reportSummary['jumlahTransaksi'] = DB::table('data_transaksi')->count();
+        $reportSummary['totalHargaTransaksi'] = DB::table('data_transaksi')->sum('harga');
+        $reportSummary['totalSampah'] = DB::table('transaksi')->sum('jumlah');
+        
+        $chart = DB::table('transaksi')
+        ->join('jenis_sampah', 'jenis_sampah.id', '=', 'transaksi.d_jenis_sampah')
+        ->select('jenis_sampah.jenis_sampah', DB::raw('COUNT(transaksi.id) AS jumlah'))
+        ->groupBy('jenis_sampah.jenis_sampah')
+        ->get();
+        $chartTotal = DB::table('transaksi')->count();
+
+        return view('private.dashboard', compact('transactionData', 'reportSummary' ,'chart', 'chartTotal'));
     }
 
     /**
