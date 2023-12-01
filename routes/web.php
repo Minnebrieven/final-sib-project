@@ -54,12 +54,16 @@ Route::get('/home', function () {
     return view('public.home');
 });
 
-Route::get('/about', function () {
-    return view('public.about');
+Route::get('/menu', function () {
+    return view('public.menu');
 });
 
-Route::get('/departments', function () {
-    return view('public.departments');
+Route::get('/organik', function () {
+    return view('public.organik');
+});
+
+Route::get('/nonorganik', function () {
+    return view('public.nonorganik');
 });
 
 Route::get('/services', function () {
@@ -70,6 +74,6 @@ Route::get('/Tim', function () {
     return view('public.Tim');
 });
 
-Route::get('/cp', function () {
+Route::get('/contact', function () {
     return view('public.contact');
 });
