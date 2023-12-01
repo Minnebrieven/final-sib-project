@@ -17,6 +17,13 @@
                         </div>
                     </a>
                 </li>
+                <li class="nav-item nav-category"><span class="nav-link">Menu</span></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/dashboard') }}">
+                        <span class="menu-title">Dashboard</span>
+                        <i class="fa-regular fa-dashboard"></i>
+                    </a>
+                </li>
                 <li class="nav-item nav-category"><span class="nav-link">Data</span></li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/berita') }}">

@@ -7,6 +7,7 @@ use App\Http\Controllers\JenisSampahController;
 use App\Http\Controllers\KategoriBeritaController;
 use App\Http\Controllers\PenjualController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,13 +19,7 @@ use App\Http\Controllers\TransaksiController;
 |
 */
 
-Route::get('/', function () {
-    return view('private.dashboard');
-});
-
-Route::get('/dashboard', function () {
-    return view('private.dashboard');
-});
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/table', function () {
     return view('private.table');
