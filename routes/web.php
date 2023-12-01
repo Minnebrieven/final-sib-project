@@ -7,7 +7,10 @@ use App\Http\Controllers\JenisSampahController;
 use App\Http\Controllers\KategoriBeritaController;
 use App\Http\Controllers\PenjualController;
 use App\Http\Controllers\TransaksiController;
+<<<<<<< HEAD
 use App\Http\Controllers\DashboardController;
+=======
+>>>>>>> 650c21fe73e3795619f1af04c4bfada2ddd74379
 use App\Http\Controllers\UserController;
 
 /*
@@ -23,11 +26,11 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('private.dashboard');
-});
+})->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('private.dashboard');
-});
+})->middleware('auth');
 
 Route::get('/table', function () {
     return view('private.table');
