@@ -53,8 +53,6 @@
   <script src="{{ asset('private/assets/js/off-canvas.js') }}"></script>
   <script src="{{ asset('private/assets/js/misc.js') }}"></script>
   <!-- endinject -->
-  <!-- Custom js for this page -->
-  <script src="{{ asset('private/assets/js/dashboard.js') }}"></script>
   <!-- End custom js for this page -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
