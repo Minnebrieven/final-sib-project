@@ -13,6 +13,8 @@
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="{{ asset('private/assets/vendors/daterangepicker/daterangepicker.css') }}">
   <link rel="stylesheet" href="{{ asset('private/assets/vendors/chartist/chartist.min.css') }}">
+  <link href="{{ asset('public/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <!-- endinject -->

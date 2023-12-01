@@ -41,9 +41,9 @@ Route::resource('/transaksi', TransaksiController::class);
 });
 */
 
-Route::get('/', function () {
-    return view('public.home');
-});
+// Route::get('/', function () {
+//     return view('public.home');
+// });
 
 Route::get('/home', function () {
     return view('public.home');
