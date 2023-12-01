@@ -7,6 +7,7 @@
         <h2>Pelayanan penjualan sampah serta informasi-informasi tentang sampah.</h2>
         <a href="#about" class="btn-get-started scrollto">Register</a>
     </div>
+    
 </section><!-- End Hero -->
 
 <!-- ======= Why Us Section ======= -->
