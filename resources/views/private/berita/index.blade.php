@@ -9,7 +9,7 @@ $no = 1;
 <div class="row">
     <div class="col">
         <a href="{{ route('berita.create') }}" class="btn btn-primary" title="Tambah Data">
-            <i class="bi bi-clipboard-plus"></i> Tambah
+            <i class="bi bi-clipboard-plus"></i>
         </a>
     </div>
 </div>

@@ -21,40 +21,33 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/berita') }}">
                         <span class="menu-title">Berita</span>
-                        <i class="fa-regular fa-newspaper"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/transaksi') }}">
                         <span class="menu-title">Transaksi</span>
-                        <i class="icon-screen-desktop menu-icon"></i>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/penjual') }}">
-                        <span class="menu-title">Data Penjual</span>
-                        <i class="icon-screen-desktop menu-icon"></i>
-                    </a>
-                </li>
-
 <!-------------------------------------------------------- Data Master ----------------------------------------------------------------->
                 <li class="nav-item nav-category"><span class="nav-link">Master Data</span></li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/jenissampah') }}">
                         <span class="menu-title">Jenis Sampah</span>
-                        <i class="icon-screen-desktop menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/penjual') }}">
+                        <span class="menu-title">Data Penjual</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/kategoriberita') }}">
                         <span class="menu-title">Kategori Berita</span>
-                        <i class="icon-screen-desktop menu-icon"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/datatransaksi') }}">
                         <span class="menu-title">Data Transaksi</span>
-                        <i class="icon-screen-desktop menu-icon"></i>
                     </a>
                 </li>
                     <div class="collapse" id="auth">

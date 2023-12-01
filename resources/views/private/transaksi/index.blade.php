@@ -28,9 +28,6 @@ $no = 1;
                 <a class="btn btn-info" href="{{route('transaksi.show',$a->id)}}" title="Detail Berita">
                     <i class="bi bi-eye"></i>
                 </a>                
-                <a class="btn btn-warning" href="" title="Ubah Berita">
-                    <i class="bi bi-pencil-fill"></i>
-                </a>
             </td>
             <!-- <td>
                 <form method="POST" action="">
