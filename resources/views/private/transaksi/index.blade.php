@@ -5,6 +5,9 @@ $ar_judul = ['NO','Nama Penjual','Jenis Sampah','Jumlah','Tanggal Transaksi','Al
 $no = 1;
 @endphp
 <h3>Daftar Transaksi</h3>  
+<a href="{{ url (('/transaksi-pdf')) }}" class="btn btn-danger" title="Export to PDF">
+	<i class="bi bi-file-earmark-pdf"></i>
+</a>
 <br /><br />
 <table class="table table-striped">
     <thead>

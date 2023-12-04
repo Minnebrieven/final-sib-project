@@ -10,6 +10,7 @@ use Illuminate\View\View; //panggil model
 use Illuminate\Support\Facades\DB; // jika pakai query builder
 use Illuminate\Database\Eloquent\Model; //jika pakai eloquent
 use App\Http\Controllers\redirect;
+use PDF;
 
 class BeritaController extends Controller
 {
@@ -211,5 +212,24 @@ class BeritaController extends Controller
         //hapus datanya dari tabel
         Berita::where('id', $id)->delete();
         return redirect()->back();
+    }
+
+    public function generatePDF()
+    {
+        $data = [
+            'title' => 'Berita',
+            'date' => date('d-m-Y H:i:s')
+        ];
+          
+        $pdf = PDF::loadView('private.berita.beritaPDF', $data);
+    
+        return $pdf->download('data_tespdf_'.date('d-m-Y_H:i:s').'.pdf');
+    }
+
+    public function beritaPDF(){
+        $ar_berita = berita::all();
+        $pdf = PDF::loadView('private.berita.beritaPDF', 
+                              ['ar_berita'=>$ar_berita]);
+        return $pdf->download('data_berita_'.date('d-m-Y_H:i:s').'.pdf');
     }
 }

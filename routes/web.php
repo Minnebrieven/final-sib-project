@@ -7,10 +7,7 @@ use App\Http\Controllers\JenisSampahController;
 use App\Http\Controllers\KategoriBeritaController;
 use App\Http\Controllers\PenjualController;
 use App\Http\Controllers\TransaksiController;
-<<<<<<< HEAD
 use App\Http\Controllers\DashboardController;
-=======
->>>>>>> 650c21fe73e3795619f1af04c4bfada2ddd74379
 use App\Http\Controllers\UserController;
 
 /*
@@ -24,13 +21,8 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('private.dashboard');
-})->middleware('auth');
 
-Route::get('/dashboard', function () {
-    return view('private.dashboard');
-})->middleware('auth');
+Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');
 
 Route::get('/table', function () {
     return view('private.table');
@@ -41,6 +33,13 @@ Route::resource('/user',UserController::class)->middleware('peran:admin');
 Route::get('/access-denied', function () {
     return view('private.access_denied');
 })->middleware('auth');
+
+Route::get('/generate-pdf', [TransaksiController::class, 'generatePDF']);
+Route::get('/transaksi-pdf', [TransaksiController::class, 'transaksiPDF']);
+
+Route::get('/generate-pdf', [BeritaController::class, 'generatePDF']);
+Route::get('/berita-pdf', [BeritaController::class, 'beritaPDF']);
+
 
 Route::resource('/berita', BeritaController::class)->middleware('peran:manager-staff');
 Route::resource('/datatransaksi', DataTransaksiController::class)->middleware('peran:manager-staff');
@@ -56,9 +55,9 @@ Route::resource('/transaksi', TransaksiController::class)->middleware('peran:man
 });
 */
 
-// Route::get('/', function () {
-//     return view('public.home');
-// });
+ Route::get('/', function () {
+     return view('public.home');
+ });
 
 Route::get('/home', function () {
     return view('public.home');
