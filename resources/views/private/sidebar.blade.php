@@ -57,6 +57,14 @@
                         <span class="menu-title">Data Transaksi</span>
                     </a>
                 </li>
+                @if(Auth::user()->role == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ url('/user') }}">
+                        <i class="bi bi-person"></i>
+                            <span>Kelola User</span>
+                    </a>
+                </li>
+                @endif
                     <div class="collapse" id="auth">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
