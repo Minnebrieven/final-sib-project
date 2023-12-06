@@ -21,7 +21,7 @@ return new class extends Migration
                 table: 'metode_pembayaran', indexName: 'transaksi_metode_pembayaran_id'
             )->onUpdate('cascade')->onDelete('cascade');
             $table->enum('status_bayar', ['belum', 'sudah']);
-            $table->double('total_harga', 8, 3);
+            $table->double('total_harga', 8, 2);
             $table->timestamps();
         });
     }
