@@ -51,6 +51,7 @@ class DatabaseSeeder extends Seeder
         
         // End of Seeding Master Data
 
+        // Start of Sampah Seed
         try {
             $botolPlastik = DB::table('sampah')->where('nama', 'Botol Plastik')->get();
             $botolPlastikID = $botolPlastik[0]->id;
@@ -74,7 +75,9 @@ class DatabaseSeeder extends Seeder
                 'harga' => 1000,
             ]);
         }
+        // End of Sampah Seed
 
+        // Start of Transaksi Seed
         $transaksiID = DB::table('transaksi')->insertGetId([
             'user_id' => $userSeederID,
             'tipe_transaksi' => 'jual',
@@ -82,7 +85,9 @@ class DatabaseSeeder extends Seeder
             'status_bayar' => 'belum',
             'total_harga' => 5000
         ]);
+        // End of Transaksi Seed
 
+        // Start of Detail Transaksi Seed
         DB::table('detail_transaksi')->insert([
             'transaksi_id' => $transaksiID,
             'sampah_id' => $botolPlastikID,
@@ -93,5 +98,26 @@ class DatabaseSeeder extends Seeder
             'sampah_id' => $kardusID,
             'jumlah' => 3,
         ]);
+        // End of Detail Transaksi Seed
+
+        // Start of Kategori Berita Seed
+        try {
+            $kategoriBerita = DB::table('kategori_berita')->where('nama', 'Lingkungan')->get();
+            $kategoriBeritaID = $kategoriBerita[0]->id;
+        } catch (\Throwable $th) {
+            $kategoriBeritaID = DB::table('kategori_berita')->insertGetId([
+                'nama' => 'Lingkungan'
+            ]);
+        }
+        // End of Kategori Berita Seed
+
+        // Start of Berita Seed
+        DB::table('berita')->insert([
+            'kategori_berita_id' => $kategoriBeritaID,
+            'user_id' => $userSeederID,
+            'judul' => 'Gunung Sampah di Desa ABC',
+            'deskripsi' => 'tumpukan sampah yang menggunug di desa ABC menganggu aktifitas sehari-hari warga desa',
+        ]);
+        // End of Berita Seed
     }
 }
