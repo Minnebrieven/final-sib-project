@@ -20,7 +20,7 @@ return new class extends Migration
                 table: 'users', indexName: 'berita_user_id'
             )->onUpdate('cascade')->onDelete('cascade');
             $table->string('judul');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->text('deskripsi');
             $table->string('foto')->nullable();
             $table->timestamps();
