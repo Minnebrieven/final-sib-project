@@ -12,10 +12,8 @@ class KategoriBerita extends Model
     protected $table = 'kategori_berita';
     protected $fillable = ['nama'];
 
-    public $timetamps = false;
-
-    public function berita(): BelongsTo
+    public function berita(): HasMany
     {
-        return $this->belongsTo(Berita::class);
+        return $this->hasMany(Berita::class);
     }
 }
