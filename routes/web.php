@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\DataTransaksiController;
+use App\Http\Controllers\SampahController;
+use App\Http\Controllers\DetailTransaksiController;
 use App\Http\Controllers\JenisSampahController;
 use App\Http\Controllers\KategoriBeritaController;
-use App\Http\Controllers\PenjualController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
@@ -42,11 +42,13 @@ Route::get('/berita-pdf', [BeritaController::class, 'beritaPDF']);
 
 
 Route::resource('/berita', BeritaController::class)->middleware('peran:manager-staff');
-Route::resource('/datatransaksi', DataTransaksiController::class)->middleware('peran:manager-staff');
+Route::resource('/sampah', SampahController::class)->middleware('peran:manager-staff');
+Route::resource('/detail_transaksi', DetailTransaksi::class)->middleware('peran:manager-staff');
 Route::resource('/jenissampah', JenisSampahController::class)->middleware('peran:manager-staff');
 Route::resource('/kategoriberita', KategoriBeritaController::class)->middleware('peran:manager-staff');
-Route::resource('/penjual', PenjualController::class)->middleware('peran:manager-staff');
 Route::resource('/transaksi', TransaksiController::class)->middleware('peran:manager-staff');
+Route::resource('/metode_pembayaran', MetodePembayaranController::class)->middleware('peran:manager-staff');
+
 
 
 

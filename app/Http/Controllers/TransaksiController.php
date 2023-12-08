@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
-use App\Models\Penjual; //panggil model
+use App\Models\Sampah; //panggil model
 use App\Models\JenisSampah; //panggil model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // jika pakai query builder
@@ -17,8 +17,8 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $ar_transaksi = Transaksi::all();//eloquent
-        return view('private.transaksi.index', compact('ar_transaksi'));
+        $arrayTransaksi = Transaksi::with('user')->get(); //eloquent
+        return view('private.transaksi.index', compact('arrayTransaksi'));
     }
 
     /**
@@ -26,7 +26,9 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        //
+        $arrayJenisSampah = JenisSampah::all();
+        $arraySampah = Sampah::all();
+        return view('public.transaksi.form', compact('arraySampah', 'arrayJenisSampah'));
     }
 
     /**
@@ -42,8 +44,9 @@ class TransaksiController extends Controller
      */
     public function show(string $id)
     {
-        $rs = Transaksi::find($id);
-        return view('private.transaksi.detail',compact('rs'));
+        $sampahArray = Sampah::all();
+        $transaksi = Transaksi::with('detail_transaksi.sampah')->find($id);
+        return view('private.transaksi.detail',compact('transaksi', 'sampahArray'));
     }
 
     /**
@@ -51,7 +54,8 @@ class TransaksiController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $transaksi = Transaksi::find($id);
+        return view('private.transaksi.form', compact('transaksi'));
     }
 
     /**
