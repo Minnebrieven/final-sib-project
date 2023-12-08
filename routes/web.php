@@ -3,10 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\SampahController;
-use App\Http\Controllers\DataTransaksiController;
+use App\Http\Controllers\DetailTransaksiController;
 use App\Http\Controllers\JenisSampahController;
 use App\Http\Controllers\KategoriBeritaController;
-use App\Http\Controllers\PenjualController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\DashboardController;
 /*
@@ -30,10 +29,9 @@ Route::get('/table', function () {
 
 Route::resource('/berita', BeritaController::class);
 Route::resource('/sampah', SampahController::class);
-Route::resource('/datatransaksi', DataTransaksiController::class);
+Route::resource('/detail_transaksi', DetailTransaksi::class);
 Route::resource('/jenissampah', JenisSampahController::class);
 Route::resource('/kategoriberita', KategoriBeritaController::class);
-Route::resource('/penjual', PenjualController::class);
 Route::resource('/transaksi', TransaksiController::class);
 Route::resource('/metode_pembayaran', MetodePembayaranController::class);
 
@@ -44,9 +42,9 @@ Route::resource('/metode_pembayaran', MetodePembayaranController::class);
 });
 */
 
-// Route::get('/', function () {
-//     return view('public.home');
-// });
+Route::get('/', function () {
+    return view('public.home');
+});
 
 Route::get('/home', function () {
     return view('public.home');

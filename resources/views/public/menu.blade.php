@@ -36,8 +36,8 @@
             <div class="col-lg-6 col-md-6">
                 <div class="icon-box">
                     <div class="icon"><i class="fas fa-pills"></i></div>
-                    <h4><a href="">Penjualan</a></h4>
-                    <p>Informasi penjualan sampah dll.</p>
+                    <h4><a href="{{route('transaksi.create')}}">Jual/Beli Sampah</a></h4>
+                    <p>Informasi jual/beli sampah dll.</p>
                 </div>
             </div>
 
