@@ -20,9 +20,10 @@ return new class extends Migration
             $table->foreignId('metode_pembayaran_id')->constrained(
                 table: 'metode_pembayaran', indexName: 'transaksi_metode_pembayaran_id'
             )->onUpdate('cascade')->onDelete('cascade');
-            $table->enum('status_bayar', ['belum', 'sudah']);
+            $table->enum('status_bayar', ['belum bayar', 'sudah bayar'])->default('belum bayar');
             $table->double('total_harga', 8, 2);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             $botolPlastikID = DB::table('sampah')->insertGetId([
                 'nama' => 'Botol Plastik',
                 'jenis_sampah_id' => $jenisSampahNonOrganikID,
-                'satuan' => 'perbotol',
+                'satuan' => 'botol',
                 'harga' => 500,
             ]);
         }
@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
             $kardusID = DB::table('sampah')->insertGetId([
                 'nama' => 'Kardus',
                 'jenis_sampah_id' => $jenisSampahNonOrganikID,
-                'satuan' => 'perkardus',
+                'satuan' => 'kardus',
                 'harga' => 1000,
             ]);
         }
@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
             'user_id' => $userSeederID,
             'tipe_transaksi' => 'jual',
             'metode_pembayaran_id' => $metodePembayaranCODID,
-            'status_bayar' => 'belum',
+            'status_bayar' => 'belum bayar',
             'total_harga' => 5000
         ]);
         // End of Transaksi Seed

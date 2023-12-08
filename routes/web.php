@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\SampahController;
 use App\Http\Controllers\DataTransaksiController;
 use App\Http\Controllers\JenisSampahController;
 use App\Http\Controllers\KategoriBeritaController;
@@ -28,11 +29,13 @@ Route::get('/table', function () {
 
 
 Route::resource('/berita', BeritaController::class);
+Route::resource('/sampah', SampahController::class);
 Route::resource('/datatransaksi', DataTransaksiController::class);
 Route::resource('/jenissampah', JenisSampahController::class);
 Route::resource('/kategoriberita', KategoriBeritaController::class);
 Route::resource('/penjual', PenjualController::class);
 Route::resource('/transaksi', TransaksiController::class);
+Route::resource('/metode_pembayaran', MetodePembayaranController::class);
 
 
 

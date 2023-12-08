@@ -16,8 +16,8 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $ar_transaksi = Transaksi::all();//eloquent
-        return view('private.transaksi.index', compact('ar_transaksi'));
+        $arrayTransaksi = Transaksi::with('user')->get();//eloquent
+        return view('private.transaksi.index', compact('arrayTransaksi'));
     }
 
     /**
@@ -41,8 +41,8 @@ class TransaksiController extends Controller
      */
     public function show(string $id)
     {
-        $rs = Transaksi::find($id);
-        return view('private.transaksi.detail',compact('rs'));
+        $transaksi = Transaksi::with('detail_transaksi.sampah')->find($id);
+        return view('private.transaksi.detail',compact('transaksi'));
     }
 
     /**
