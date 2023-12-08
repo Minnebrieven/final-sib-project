@@ -1,5 +1,5 @@
 @php
-$ar_judul = ['NO','KATEGORI BERITA','AUTHOR','JUDUL','LINK','DESKRIPSI','TANGGAL'];
+$ar_judul = ['KATEGORI BERITA','AUTHOR','JUDUL','LINK','DESKRIPSI','TANGGAL'];
 $no = 1;
 @endphp
 <h3 align="center">Data Berita</h3>
@@ -15,9 +15,8 @@ $no = 1;
 	<tbody>
 		@foreach($ar_berita as $a)
 			<tr>
-				<td>{{ $no++ }}</td>
-				<td>{{ $a->kategori }}</td>
-				<td>{{ $a->author }}</td>
+				<td>{{ $a->kategori_berita->nama }}</td>
+				<td>{{ $a->user->name }}</td>
 				<td>{{ $a->judul }}</td>
 				<td>{{ $a->link }}</td>
 				<td>{{ $a->deskripsi }}</td>
