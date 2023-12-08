@@ -5,7 +5,7 @@
     <div class="container">
         <h1>Welcome to Ruang Literasi Sampah</h1>
         <h2>Pelayanan penjualan sampah serta informasi-informasi tentang sampah.</h2>
-        <a href="#about" class="btn-get-started scrollto">Register</a>
+        <a href="{{ (('/register')) }}" class="btn-get-started scrollto">Register</a>
     </div>
     
 </section><!-- End Hero -->

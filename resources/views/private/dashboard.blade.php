@@ -3,11 +3,7 @@
     <script>
         var doughnutPieData = {
             datasets: [{
-                data: [
-                    @foreach ($chart as $ch)
-                        '{{ $ch->jumlah }}',
-                    @endforeach
-                ],
+                data: [@foreach ($chart as $ch) '{{ $ch->jumlah }}', @endforeach],
                 backgroundColor: [
                     '#ffca00',
                     '#38ce3c',
@@ -21,11 +17,7 @@
             }],
 
             // These labels appear in the legend and in the tooltips when hovering different arcs
-            labels: [
-                @foreach ($chart as $ch)
-                    '{{ $ch->jenis_sampah }}',
-                @endforeach
-            ]
+            labels: [@foreach ($chart as $ch) '{{ $ch->jenis_sampah }}', @endforeach]
         };
         var doughnutPieOptions = {
             cutoutPercentage: 75,
