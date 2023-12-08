@@ -160,6 +160,39 @@
                 <div class="card-body">
                     <div class="card-title">Users Berdasarkan Role</div>
                     <canvas id="pieChart" height="210"></canvas>
+                    <script>
+                        var lbl2 = [@foreach($grafik_pie as $gp) '{{ $gp->role }}', @endforeach];
+                        var total = [@foreach($grafik_pie as $gp) {{ $gp->total }}, @endforeach];
+                        document.addEventListener("DOMContentLoaded", () => {
+                            new Chart(document.querySelector('#pieChart'), {
+                                type: 'pie',
+                                data: {
+                                    /*
+                                    labels: [
+                                        'Red',
+                                        'Blue',
+                                        'Yellow'
+                                    ],
+                                    */
+                                    labels:lbl2,
+                                    datasets: [{
+                                        label: 'Total User berdasarkan Role',
+                                        //data: [300, 50, 100],
+                                        data: total,
+                                        backgroundColor: [
+                                            'rgb(255, 99, 132)',
+                                            'rgb(54, 162, 235)',
+                                            'rgb(255, 205, 86)',
+                                            'rgb(60, 179, 113)',
+                                            'rgb(106, 90, 205)'
+                                        ],
+                                        hoverOffset: 4
+                                    }]
+                                }
+                            });
+                        });
+
+                    </script>
                 </div>
             </div>
         </div>
@@ -186,9 +219,11 @@
                             <tbody>
                                 @foreach ($transactionData['data'] as $transaksi)
                                     <tr>
-                                        <td>{{ $transaksi->nama_penjual }}</td>
-                                        <td>{{ $transaksi->jumlah }}</td>
-                                        <td>{{ $transaksi->tgl_transaksi }}</td>
+                                    <td>{{ ucfirst($transaksi->tipe_transaksi) }}</td>
+                                    <td>{{ $transaksi->user->name }}</td>
+                                    <td>Rp. {{ number_format($transaksi->total_harga, 0, ',', '.') }}</td>
+                                    <td><label class="badge {{ $transaksi->status_bayar == 'sudah bayar' ? 'badge-success' : 'badge-danger' }}">{{ ucwords($transaksi->status_bayar) }}</label></td>
+                                    <td>
                                     </tr>
                                 @endforeach
                             </tbody>
