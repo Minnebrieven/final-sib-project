@@ -87,9 +87,9 @@ Route::get('/contact', function () {
 
 /*Backend*/
 
-Route::get('/', function () {
-    return view('private.dashboard');
-});
+// Route::get('/', function () {
+//     return view('private.dashboard');
+// });
 
 Route::get('/dashboard', function () {
     return view('private.dashboard');

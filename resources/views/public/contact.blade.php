@@ -6,7 +6,7 @@
 
         <div class="section-title">
             <h2>Contact</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <p>Ayo terhubung! Kami bersemangat tentang literasi sampah dan ingin mendengar dari Anda. Apakah Anda memiliki pertanyaan, ide, atau sekadar ingin menyapa, jangan ragu untuk menghubungi kami.</p>
         </div>
     </div>
 
@@ -69,6 +69,7 @@
             </div>
 
         </div>
+        <a href="{{ url('/home') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Kembali</a>
 
     </div>
 </section><!-- End Contact Section -->

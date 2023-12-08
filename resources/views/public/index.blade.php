@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('public/assets/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('public/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('public/assets/img/logo.png') }}" rel="icon">
+    <link href="{{ asset('public/assets/img/logo.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -56,11 +56,11 @@
                     <div class="col-lg-3 col-md-6 footer-contact">
                         <h3>Medilab</h3>
                         <p>
-                            A108 Adam Street <br>
-                            New York, NY 535022<br>
-                            United States <br><br>
-                            <strong>Phone:</strong> +1 5589 55488 55<br>
-                            <strong>Email:</strong> info@example.com<br>
+                            Kampus Merdeka X MSIB <br>
+                            Tanggerang, NF Computer<br>
+                            Indonesia <br><br>
+                            <strong>Phone:</strong> +62 853 2676 2688<br>
+                            <strong>Email:</strong> info@literasisampah.com<br>
                         </p>
                     </div>
 
