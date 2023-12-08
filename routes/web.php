@@ -19,11 +19,6 @@ use App\Http\Controllers\TransaksiController;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});
-*/
-
 Route::get('/', function () {
     return view('public.home');
 });
@@ -54,9 +49,9 @@ Route::get('/contact', function () {
 
 /*Backend*/
 
-Route::get('/', function () {
-    return view('private.dashboard');
-});
+// Route::get('/', function () {
+//     return view('private.dashboard');
+// });
 
 Route::get('/dashboard', function () {
     return view('private.dashboard');

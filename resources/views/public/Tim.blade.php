@@ -11,9 +11,9 @@
 
         <div class="row">
 
-            <div class="col-lg-6">
+            <div class="col-lg-6 mt-4">
                 <div class="member d-flex align-items-start">
-                    <div class="pic"><img src="public/assets/img/doctors/doctors-1.jpg" class="img-fluid" alt=""></div>
+                    <div class="pic"><img src="public/assets/img/doctors/jaisy.jpeg" class="img-fluid" alt=""></div>
                     <div class="member-info">
                         <h4>Muhammad Jaisy</h4>
                         <span>Project Manager</span>
@@ -31,8 +31,8 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 mt-4 mt-lg-0">
-                <div class="member d-flex align-items-start">
+            <div class="col-lg-6 mt-4">
+                <div class=" member d-flex align-items-start">
                     <div class="pic"><img src="public/assets/img/doctors/doctors-2.jpg" class="img-fluid" alt=""></div>
                     <div class="member-info">
                         <h4>Muarif Rizqy</h4>
@@ -53,7 +53,7 @@
 
             <div class="col-lg-6 mt-4">
                 <div class="member d-flex align-items-start">
-                    <div class="pic"><img src="public/assets/img/doctors/doctors-3.jpg" class="img-fluid" alt=""></div>
+                    <div class="pic"><img src="public/assets/img/doctors/muktar.jpeg" class="img-fluid" alt=""></div>
                     <div class="member-info">
                         <h4>Izzudin Muktar</h4>
                         <span>Backend Devoloper</span>
@@ -64,8 +64,8 @@
                         <div class="social">
                             <a href=""><i class="ri-twitter-fill"></i></a>
                             <a href=""><i class="ri-facebook-fill"></i></a>
-                            <a href=""><i class="ri-instagram-fill"></i></a>
-                            <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                            <a href="https://www.instagram.com/mukktaaaaar/"><i class="ri-instagram-fill"></i></a>
+                            <a href="https://www.linkedin.com/in/izudin-muktar-074903227/"> <i class="ri-linkedin-box-fill"></i> </a>
                         </div>
                     </div>
                 </div>
@@ -73,14 +73,15 @@
 
             <div class="col-lg-6 mt-4">
                 <div class="member d-flex align-items-start">
-                    <div class="pic"><img src="public/assets/img/doctors/doctors-4.jpg" class="img-fluid" alt=""></div>
+                    <div class="pic"><img src="public/assets/img/doctors/muktar.jpeg" class="img-fluid" alt=""></div>
                     <div class="member-info">
-                        <h4>Adiaalfatih</h4>
-                        <span>Frontend Devoloper</span>
+                        <h4>Moch Fikri</h4>
+                        <span>Frontend Devoloper & Backend Devoloper</span>
                         <p><b>Desain Antarmuka Pengguna: </b>sama dengan tim desain untuk menerjemahkan desain ke dalam antarmuka pengguna yang menarik dan mudah digunakan.</p>
-                        <p><b>Integrasi Konten: </b>Menyatukan konten literasi sampah ke dalam struktur antarmuka, memastikan navigasi yang intuitif.</p>
                         <p><b>Responsif dan Kompatibilitas Cross-browser: </b> bahwa website dapat diakses dan bekerja dengan baik di berbagai perangkat dan browser.</p>
-                        <p><b>Animasi dan Interaktivitas:</b> Menambahkan elemen animasi dan interaktivitas untuk meningkatkan pengalaman pengguna.</p>
+                        <p><b>Pengelolaan Database: </b> dan mengelola database untuk menyimpan informasi terkait literasi sampah.</p>
+                        <p><b>Pemrograman Fungsionalitas: </b> kode backend untuk fungsionalitas seperti pencarian, filter, dan pengelolaan konten.</p>
+                        <p><b>Optimisasi Kinerja Backend: </b> kinerja backend yang optimal untuk menangani lalu lintas pengguna dan permintaan.</p>
                         <div class="social">
                             <a href=""><i class="ri-twitter-fill"></i></a>
                             <a href=""><i class="ri-facebook-fill"></i></a>
@@ -95,7 +96,7 @@
                 <div class="member d-flex align-items-start">
                     <div class="pic"><img src="public/assets/img/doctors/doctors-2.jpg" class="img-fluid" alt=""></div>
                     <div class="member-info">
-                        <h4>Moch Fikri</h4>
+                        <h4>Adiaalfatih</h4>
                         <span>Documentation</span>
                         <p><b>Deskripsi Proyek: </b> awal yang menjelaskan visi, misi, dan tujuan proyek literasi sampah.</p>
                         <p><b>Ruang Lingkup Proyek: </b> batasan dan cakupan proyek, termasuk fitur-fitur utama dan fungsionalitas yang diinginkan.</p>
@@ -103,15 +104,17 @@
                         <p><b>Kebijakan Privasi dan Keamanan: </b> yang menjelaskan bagaimana data pengguna dikelola dan dilindungi.</p>
                         <div class="social">
                             <a href=""><i class="ri-twitter-fill"></i></a>
-                            <a href=""><i class="ri-facebook-fill"></i></a>
-                            <a href=""><i class="ri-instagram-fill"></i></a>
-                            <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                            <a href="https://www.facebook.com/ady.arrekha?mibextid=ZbWKwL"><i class="ri-facebook-fill"></i></a>
+                            <a href="https://www.instagram.com/adialfatih45"><i class="ri-instagram-fill"></i></a>
+                            <a href="https://id.linkedin.com/in/adi-undefined-8b19b529b"> <i class="ri-linkedin-box-fill"></i> </a>
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
+        </br>
+        <a href="{{ url('/home') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Kembali</a>
 
     </div>
 </section><!-- End Doctors Section -->
