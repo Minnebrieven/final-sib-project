@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Literasi Sampah</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+  <title>Literasi Sampah</title>
+  <meta content="platform jual beli sampah" name="description">
+  <meta content="bank sampah" name="keywords">
 
     <!-- Favicons -->
     <link href="{{ asset('public/assets/img/logo.png') }}" rel="icon">
