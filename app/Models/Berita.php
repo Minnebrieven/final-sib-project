@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Berita extends Model
 {
     use HasFactory;
@@ -16,12 +15,16 @@ class Berita extends Model
         'judul',
         'url',
         'deskripsi',
-        'tanggal',
         'foto'
     ];
 
-    public function kategori_berita(): HasMany
+    public function kategori_berita(): BelongsTo
     {
-        return $this->hasMany(KategoriBerita::class);
+        return $this->belongsTo(KategoriBerita::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

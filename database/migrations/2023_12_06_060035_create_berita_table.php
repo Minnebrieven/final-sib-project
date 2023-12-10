@@ -23,7 +23,8 @@ return new class extends Migration
             $table->string('url')->nullable();
             $table->text('deskripsi');
             $table->string('foto')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 
