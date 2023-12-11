@@ -16,20 +16,21 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $transactionData['title'] = ['Nama Penjual', 'Jumlah', 'Tanggal Transaksi'];
-        $transactionData['data'] = DB::table('transaksi')->limit('5')->get(); // 5 latest transaction
-        $reportSummary['jumlahTransaksi'] = DB::table('data_transaksi')->count();
-        $reportSummary['totalHargaTransaksi'] = DB::table('data_transaksi')->sum('harga');
-        $reportSummary['totalSampah'] = DB::table('transaksi')->sum('jumlah');
-        
-        $chart = DB::table('transaksi')
-        ->join('jenis_sampah', 'jenis_sampah.id', '=', 'transaksi.d_jenis_sampah')
-        ->select('jenis_sampah.jenis_sampah', DB::raw('COUNT(transaksi.id) AS jumlah'))
-        ->groupBy('jenis_sampah.jenis_sampah')
-        ->get();
+        $transactionData['title'] = ['Tipe Transaksi', 'Penjual/Pembeli', 'Total Harga', 'Status Pembayaran'];
+        $transactionData['data'] = Transaksi::with('user')->get(); // 5 latest transaction
+        $reportSummary['totalHargaTransaksi'] = DB::table('transaksi')->sum('total_harga');
+        $reportSummary['totalSampah'] = DB::table('detail_transaksi')->sum('jumlah');
+        $reportSummary['jumlahTransaksi'] = DB::table('transaksi')->count();
+        $chart = Transaksi::with('user')->get();
         $chartTotal = DB::table('transaksi')->count();
 
-        return view('private.dashboard', compact('chart','transactionData', 'reportSummary' , 'chartTotal'));
+        $grafik_pie = DB::table('users')
+        ->select('role', DB::raw('count(*) as total'))
+        ->groupBy('role')
+        ->get();
+
+        return view('private.dashboard', compact('chart','transactionData', 'reportSummary' , 'chartTotal','grafik_pie'));
+       
     }
 
     /**

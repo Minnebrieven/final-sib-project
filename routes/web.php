@@ -96,3 +96,7 @@ Route::get('/contact', function () {
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//-----Rest API----
+Route::get('/api-users', [UserController::class, 'apiUsers']);
+Route::get('/api-user/{id}', [UserController::class, 'apiUserDetail']);
