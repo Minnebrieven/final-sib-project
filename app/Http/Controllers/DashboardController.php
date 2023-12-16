@@ -29,7 +29,7 @@ class DashboardController extends Controller
         ->get();
         $chartTotal = DB::table('transaksi')->count();
 
-        return view('private.dashboard', compact('transactionData', 'reportSummary' ,'chart', 'chartTotal'));
+        return view('private.dashboard', compact('chart','transactionData', 'reportSummary' , 'chartTotal'));
     }
 
     /**

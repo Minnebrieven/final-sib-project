@@ -9,6 +9,7 @@ use App\Models\MetodePembayaran; //panggil model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // jika pakai query builder
 use Illuminate\Database\Eloquent\Model;
+use PDF;
 
 class TransaksiController extends Controller
 {
@@ -106,5 +107,24 @@ class TransaksiController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function generatePDF()
+    {
+        $data = [
+            'title' => 'Data Transaksi',
+            'date' => date('d-m-Y H:i:s')
+        ];
+          
+        $pdf = PDF::loadView('private.transaksi.tesPDF', $data);
+    
+        return $pdf->download('data_tespdf_'.date('d-m-Y_H:i:s').'.pdf');
+    }
+
+    public function transaksiPDF(){
+        $ar_transaksi = transaksi::all();
+        $pdf = PDF::loadView('private.transaksi.transaksiPDF', 
+                              ['ar_transaksi'=>$ar_transaksi]);
+        return $pdf->download('data_transaksi_'.date('d-m-Y_H:i:s').'.pdf');
     }
 }
