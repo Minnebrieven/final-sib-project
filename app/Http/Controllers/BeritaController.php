@@ -18,7 +18,7 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $ar_berita = Berita::all(); //eloquent
+        $ar_berita = Berita::with('kategori_berita')->get(); //eloquent
         return view('private.berita.index', compact('ar_berita'));
     }
 
@@ -40,23 +40,17 @@ class BeritaController extends Controller
     {
         $validated = $request->validate(
             [
-                'kategori' => 'required|integer',
-                'author' => 'required|max:45',
+                'kategori_berita_id' => 'required|integer',
                 'judul' => 'required',
-                'link' => 'required',
+                'url' => 'required',
                 'deskripsi' => 'required',
-                'tanggal' => 'required|between:0,99.99',
                 'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg|min:2|max:9000', //KB
             ],
 
             [
-                'kategori.required' => 'Kategori Wajib Diisi',
-                'author.required' => 'Nama Wajib Diisi',
-                'author.max' => 'Nama Maksimal 45 karakter',
-                'link.required' => 'link Wajib Diisi',
+                'kategori_berita_id.required' => 'Kategori Wajib Diisi',
+                'url.required' => 'link Wajib Diisi',
                 'deskripsi.required' => 'Deskeirpsi Wajib Diisi',
-                'tanggal.required' => 'Tanggal Wajib Diisi',
-                'tanggal.between' => 'Tanggal Bilangan Pecahan',
                 'foto.min' => 'Ukuran file kurang 2 KB',
                 'foto.max' => 'Ukuran file melebihi 9000 KB',
                 'foto.image' => 'File foto bukan gambar',
@@ -75,12 +69,11 @@ class BeritaController extends Controller
         //lakukan insert data dari request form dgn query builder
         try {
             DB::table('berita')->insert([
-                'kategori' => $request->kategori,
-                'author' => $request->author,
+                'kategori_berita_id' => $request->kategori_berita_id,
+                'user_id' => $request->user_id,
                 'judul' => $request->judul,
-                'link' => $request->link,
+                'url' => $request->url,
                 'deskripsi' => $request->deskripsi,
-                'tanggal' => $request->tanggal,
                 'foto' => $fileName
             ]);
 
@@ -122,27 +115,21 @@ class BeritaController extends Controller
     {
         $validated = $request->validate(
             [
-                'kategori' => 'required|integer',
-                'author' => 'required|max:45',
+                'kategori_berita_id' => 'required|integer',
                 'judul' => 'required',
-                'link' => 'required',
+                'url' => 'required',
                 'deskripsi' => 'required',
-                'tanggal' => 'required|between:0,99.99',
                 'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif,svg|min:2|max:9000', //KB
             ],
 
             [
-                'kategori.required' => 'Kategori Wajib Diisi',
-                'author.required' => 'Nama Wajib Diisi',
-                'author.max' => 'Nama Maksimal 45 karakter',
-                'link.required' => 'link Wajib Diisi',
+                'kategori_berita_id.required' => 'Kategori Wajib Diisi',
+                'url.required' => 'url Wajib Diisi',
                 'deskripsi.required' => 'Deskeirpsi Wajib Diisi',
-                'tanggal.required' => 'Tanggal Wajib Diisi',
-                'tanggal.between' => 'Tanggal Bilangan Pecahan',
                 'foto.min' => 'Ukuran file kurang 2 KB',
                 'foto.max' => 'Ukuran file melebihi 9000 KB',
                 'foto.image' => 'File foto bukan gambar',
-                'foto.mimes' => 'Extension file selain jpg,jpeg,png,gif,svg',
+                'foto.mimes' => 'Extension file selain jpg,jpeg,png,gif,svg'
             ]
         );
 
@@ -153,7 +140,13 @@ class BeritaController extends Controller
         //------------apakah user  ingin ubah upload foto baru-----------
         if (!empty($request->foto)) {
             //jika ada foto lama, hapus foto lamanya terlebih dahulu
-            if (!empty($namaFileFotoLama)) unlink('private/assets/img/' . $namaFileFotoLama);
+            if (!empty($namaFileFotoLama)) {
+                try {
+                    unlink('private/assets/img/' . $namaFileFotoLama);
+                } catch (\Exception $e) {
+                    //throw $th;
+                }
+            }
             //lalukan proses ubah foto lama menjadi foto baru
             $fileName = 'berita_' . date("Ymd_h-i-s") . '.' . $request->foto->extension();
             //$fileName = $request->foto->getClientOriginalName();
@@ -163,17 +156,14 @@ class BeritaController extends Controller
         }
 
         //lakukan insert data dari request form dgn query builder
-        DB::table('berita')->where('id', $id)->update(
-            [
-                'kategori' => $request->kategori,
-                'author' => $request->author,
-                'judul' => $request->judul,
-                'link' => $request->link,
-                'deskripsi' => $request->deskripsi,
-                'tanggal' => $request->tanggal,
-                'foto' => $fileName
-            ]
-        );
+        DB::table('berita')->where('id',$id)->update([
+            'kategori_berita_id' => $request->kategori_berita_id,
+            'user_id' => $request->user_id,
+            'judul' => $request->judul,
+            'url' => $request->url,
+            'deskripsi' => $request->deskripsi,
+            'foto' => $fileName
+        ]);
         return redirect('/berita' . '/' . $id)
             ->with('success', 'Data Asset Berhasil Diubah');
     }
@@ -211,5 +201,24 @@ class BeritaController extends Controller
         //hapus datanya dari tabel
         Berita::where('id', $id)->delete();
         return redirect()->back();
+    }
+  
+    public function generatePDF()
+    {
+        $data = [
+            'title' => 'Berita',
+            'date' => date('d-m-Y H:i:s')
+        ];
+        
+        $pdf = PDF::loadView('private.berita.beritaPDF', $data);
+    
+        return $pdf->download('data_tespdf_'.date('d-m-Y_H:i:s').'.pdf');
+    }
+
+    public function beritaPDF(){
+        $ar_berita = berita::all();
+        $pdf = PDF::loadView('private.berita.beritaPDF', 
+                            ['ar_berita'=>$ar_berita]);
+        return $pdf->download('data_berita_'.date('d-m-Y_H:i:s').'.pdf');
     }
 }

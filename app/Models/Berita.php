@@ -4,18 +4,27 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Berita extends Model
 {
     use HasFactory;
     protected $table = 'berita';
-    protected $fillable = ['kategori_berita', 'author', 'judul', 'url', 'deskripsi', 'tanggal', 'foto'];
+    protected $fillable = [
+        'kategori_berita_id',
+        'user_id',
+        'judul',
+        'url',
+        'deskripsi',
+        'foto'
+    ];
 
-    public $timetamps = false;
-
-    public function kategori_berita(): HasMany
+    public function kategori_berita(): BelongsTo
     {
-        return $this->hasMany(KategoriBerita::class);
+        return $this->belongsTo(KategoriBerita::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

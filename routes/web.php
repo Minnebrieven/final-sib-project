@@ -99,9 +99,9 @@ Route::get('/table', function () {
     return view('private.table');
 });
 
-Route::resource('/berita', BeritaController::class);
-Route::resource('/datatransaksi', DataTransaksiController::class);
-Route::resource('/jenissampah', JenisSampahController::class);
-Route::resource('/kategoriberita', KategoriBeritaController::class);
-Route::resource('/penjual', PenjualController::class);
-Route::resource('/transaksi', TransaksiController::class);
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//-----Rest API----
+Route::get('/api-users', [UserController::class, 'apiUsers']);
+Route::get('/api-user/{id}', [UserController::class, 'apiUserDetail']);

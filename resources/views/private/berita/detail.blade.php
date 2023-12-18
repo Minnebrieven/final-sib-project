@@ -1,5 +1,14 @@
 @extends('private.index')
 @section('content')
+<div class="page-header">
+	<h3 class="page-title"> Detail Berita </h3>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{{ route('berita.index') }}">Berita</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Detail Berita</li>
+		</ol>
+	</nav>
+</div>
 <div class="row">
 	<br><br>
 	<div class="col-md-6">
