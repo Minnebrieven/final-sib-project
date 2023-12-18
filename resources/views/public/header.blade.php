@@ -6,8 +6,8 @@
 
         <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
-                <li><a class="nav-link scrollto active" href="{{ ('/home') }}">Home</a></li>
-                <li><a class="nav-link scrollto" href="{{ ('/menu') }}">About</a></li>
+                <li><a class="nav-link scrollto" href="{{ ('/home') }}">Home</a></li>
+                <li><a class="nav-link scrollto active" href="{{ ('/menu') }}">About</a></li>
                 <li><a class="nav-link scrollto" href="{{ ('/Tim') }}">Tim</a></li>
                 <li class="dropdown"><a href="#"><span>Menu</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
@@ -21,6 +21,6 @@
         </nav><!-- .navbar -->
         <!-- <a href="private/index.blade.php" class="appointment-btn scrollto"><span class="d-none d-md-inline">Log</span> in</a> -->
         <a href="{{ url('/dashboard') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Log</span> in</a>
-
+        <a href="{{ (('/register')) }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Register</a>
     </div>
 </header><!-- End Header -->

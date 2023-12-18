@@ -12,7 +12,6 @@
 <!-- ======= Why Us Section ======= -->
 <section id="why-us" class="why-us">
     <div class="container">
-
         <div class="row">
             <div class="col-lg-4 d-flex align-items-stretch">
                 <div class="content">
@@ -55,7 +54,6 @@
                 </div><!-- End .content-->
             </div>
         </div>
-
     </div>
 </section>
 <!-- End Why Us Section -->
