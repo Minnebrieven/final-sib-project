@@ -159,9 +159,8 @@ h6 {
     padding: 15px 0;
     box-shadow: 0px 2px 15px rgba(25, 119, 204, 0.1);
 }
-
-#header.header-scrolled {
-    top: 0;
+.nav-link.active {
+    color: blue !important;
 }
 
 #header .logo {
