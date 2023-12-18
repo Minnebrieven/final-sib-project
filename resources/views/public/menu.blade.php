@@ -6,10 +6,13 @@
 
         <div class="section-title">
             <h2>Welcome</h2>
-            <p>Di sini, kami membuka pintu bagi Anda untuk menjelajahi dunia literasi sampah yang menyentuh aspek-aspek penting dalam pengelolaan limbah dan keberlanjutan. Melalui konten-konten kami yang informatif dan inspiratif, kami bertujuan untuk memberikan wawasan mendalam tentang bagaimana setiap individu dapat berkontribusi pada perubahan positif dalam penanganan sampah.</p>
-            <br>
-            <h3>Sampah</h3>
-            <p>Sampah merupakan permasalahan yang sangat umum yang terjadi di masyarakat global. Sampah merupakan material sisa hasil aktivitas yang dibuang sebagai hasil dari proses produksi, baik itu dalam industri maupun rumah tangga. Dapat dikatakan sampah adalah sesuatu yang tidak diinginkan oleh manusia setelah proses dan penggunaannya berakhir.</p>
+            <p>Mari bersama-sama menjelajahi dunia literasi sampah untuk menciptakan perubahan positif dalam kehidupan sehari-hari kita. Di sini, kami berbagi pengetahuan, ide, dan inspirasi untuk membantu Anda memahami peran penting kita dalam menjaga kebersihan dan keberlanjutan bumi.</p>
+            <h2>Sampah</h2>
+            <p>
+                Sampah merupakan permasalahan yang sangat umum yang terjadi di masyarakat global.
+                Sampah merupakan material sisa hasil aktivitas yang dibuang sebagai hasil dari proses produksi, baik itu dalam industri maupun rumah tangga.
+                Dapat dikatakan sampah adalah sesuatu yang tidak diinginkan oleh manusia setelah proses dan penggunaannya berakhir..
+            </p>
         </div>
 
         <div class="row">
@@ -36,8 +39,8 @@
             <div class="col-lg-6 col-md-6">
                 <div class="icon-box">
                     <div class="icon"><i class="fas fa-pills"></i></div>
-                    <h4><a href="{{route('transaksi.create')}}">Jual/Beli Sampah</a></h4>
-                    <p>Informasi jual/beli sampah dll.</p>
+                    <h4><a href="">Penjualan</a></h4>
+                    <p>Informasi penjualan sampah dll.</p>
                 </div>
             </div>
 
@@ -49,7 +52,8 @@
                 </div>
             </div>
         </div>
-
+        </br>
+        <a href="{{ url('/home') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Kembali</a>
     </div>
 </section><!-- End Services Section -->
 @endsection

@@ -22,13 +22,13 @@ use App\Http\Controllers\UserController;
 */
 
 
-Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('/table', function () {
     return view('private.table');
 })->middleware('auth');
 
-Route::resource('/user',UserController::class)->middleware('peran:admin');
+Route::resource('/user', UserController::class)->middleware('peran:admin');
 
 Route::get('/access-denied', function () {
     return view('private.access_denied');
@@ -57,9 +57,9 @@ Route::resource('/metode_pembayaran', MetodePembayaranController::class)->middle
 });
 */
 
- Route::get('/', function () {
-     return view('public.home');
- });
+Route::get('/', function () {
+    return view('public.home');
+});
 
 Route::get('/home', function () {
     return view('public.home');
@@ -77,14 +77,6 @@ Route::get('/nonorganik', function () {
     return view('public.nonorganik');
 });
 
-Route::get('/services', function () {
-    return view('public.services');
-});
-
-Route::get('/after-register', function () {
-    return view('public.after_register');
-});
-
 Route::get('/Tim', function () {
     return view('public.Tim');
 });
@@ -93,7 +85,20 @@ Route::get('/contact', function () {
     return view('public.contact');
 });
 
-Auth::routes();
+/*Backend*/
+
+// Route::get('/', function () {
+//     return view('private.dashboard');
+// });
+
+Route::get('/dashboard', function () {
+    return view('private.dashboard');
+});
+
+Route::get('/table', function () {
+    return view('private.table');
+});
+
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
