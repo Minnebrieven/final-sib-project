@@ -18,9 +18,9 @@ $no = 1;
 				<td>{{ $a->kategori_berita->nama }}</td>
 				<td>{{ $a->user->name }}</td>
 				<td>{{ $a->judul }}</td>
-				<td>{{ $a->link }}</td>
+				<td>{{ $a->url }}</td>
 				<td>{{ $a->deskripsi }}</td>
-				<td>{{ $a->tanggal }}</td>
+				<td>{{ $a->created_at->toFormattedDateString() }}</td>
 			</tr>
 		@endforeach
 	</tbody>

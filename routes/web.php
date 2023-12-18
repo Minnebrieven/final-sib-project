@@ -22,13 +22,13 @@ use App\Http\Controllers\UserController;
 */
 
 
-Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('peran:manager-staff-admin');
 
 Route::get('/table', function () {
     return view('private.table');
 })->middleware('auth');
 
-Route::resource('/user',UserController::class)->middleware('peran:admin');
+Route::resource('/user', UserController::class)->middleware('peran:admin');
 
 Route::get('/access-denied', function () {
     return view('private.access_denied');
@@ -41,13 +41,13 @@ Route::get('/generate-pdf', [BeritaController::class, 'generatePDF']);
 Route::get('/berita-pdf', [BeritaController::class, 'beritaPDF']);
 
 
-Route::resource('/berita', BeritaController::class)->middleware('peran:manager-staff');
-Route::resource('/sampah', SampahController::class)->middleware('peran:manager-staff');
-Route::resource('/detail_transaksi', DetailTransaksi::class)->middleware('peran:manager-staff');
-Route::resource('/jenissampah', JenisSampahController::class)->middleware('peran:manager-staff');
-Route::resource('/kategoriberita', KategoriBeritaController::class)->middleware('peran:manager-staff');
-Route::resource('/transaksi', TransaksiController::class)->middleware('peran:manager-staff');
-Route::resource('/metode_pembayaran', MetodePembayaranController::class)->middleware('peran:manager-staff');
+Route::resource('/berita', BeritaController::class)->middleware('peran:manager-staff-admin');
+Route::resource('/sampah', SampahController::class)->middleware('peran:manager-staff-admin');
+Route::resource('/detail_transaksi', DetailTransaksi::class)->middleware('peran:manager-staff-admin');
+Route::resource('/jenissampah', JenisSampahController::class)->middleware('peran:manager-staff-admin');
+Route::resource('/kategoriberita', KategoriBeritaController::class)->middleware('peran:manager-staff-admin');
+Route::resource('/transaksi', TransaksiController::class)->middleware('peran:manager-staff-admin');
+Route::resource('/metode_pembayaran', MetodePembayaranController::class)->middleware('peran:manager-staff-admin');
 
 
 
@@ -57,9 +57,9 @@ Route::resource('/metode_pembayaran', MetodePembayaranController::class)->middle
 });
 */
 
- Route::get('/', function () {
-     return view('public.home');
- });
+Route::get('/', function () {
+    return view('public.home');
+});
 
 Route::get('/home', function () {
     return view('public.home');

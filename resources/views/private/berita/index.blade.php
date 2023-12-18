@@ -1,7 +1,7 @@
 @extends('private.index')
 @section('content')
 @php
-$arrayTitle = ['AUTHOR','JUDUL','LINK','ACTION'];
+$arrayTitle = ['AUTHOR','JUDUL','TANGGAL','ACTION'];
 @endphp
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
