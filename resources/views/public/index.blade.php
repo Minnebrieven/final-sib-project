@@ -69,6 +69,8 @@
                         <ul>
                             <li><i class="bx bx-chevron-right"></i> <a href="home">Home</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="menu">Menu</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="organik">Sampah Organik</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="nonorganik">Sampah Nonorganik</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="Tim">Tim</a></li>
                         </ul>
                     </div>
@@ -76,19 +78,9 @@
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Our Services</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="organik">Sampah Organik</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="nonorganik">Sampah Nonorganik</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Penjualan</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Berita</a></li>
                         </ul>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 footer-newsletter">
-                        <h4>Mari Bergabung</h4>
-                        <p>Bersihkan Bumi Indonesia dari sampah</p>
-                        <form action="" method="post">
-                            <input type="email" name="email"><input type="submit" value="Subscribe">
-                        </form>
                     </div>
 
                 </div>
