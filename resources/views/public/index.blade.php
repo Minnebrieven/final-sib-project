@@ -54,7 +54,7 @@
                 <div class="row">
 
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <h3>Medilab</h3>
+                        <h3>Literasi Sampah</h3>
                         <p>
                             Kampus Merdeka X MSIB <br>
                             Tanggerang, NF Computer<br>
