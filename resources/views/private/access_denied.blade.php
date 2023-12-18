@@ -2,5 +2,5 @@
     <h3>Access Denied !!!</h3>
     <hr/>
     Maaf, Anda Terlarang Akses Halaman Ini !!!
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+	<a href="{{ url()->previous() }}" class="btn btn-primary btn">Go Back</a>
 </div>

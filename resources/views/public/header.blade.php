@@ -11,16 +11,23 @@
                 <li><a class="nav-link scrollto {{ request()->is('Tim') ? 'active' : '' }}" href="{{ ('/Tim') }}">Tim</a></li>
                 <li class="dropdown"><a href="#"><span>Menu</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="#">Penjualan</a></li>
-                        <li><a href="#">Berita</a></li>
+                        <li><a href="{{route('transaksi.create')}}">Jual/Beli Sampah</a></li>
+                        <li><a href="{{url('/berita')}}">Berita</a></li>
                     </ul>
                 </li>
                 <li><a class="nav-link scrollto {{ request()->is('contact') ? 'active' : '' }}" href="{{ ('/contact') }}">Contact</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
-        <!-- <a href="private/index.blade.php" class="appointment-btn scrollto"><span class="d-none d-md-inline">Log</span> in</a> -->
-        <a href="{{ url('/dashboard') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Log</span> in</a>
-        <a href="{{ (('/register')) }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Register</a>
+        @guest
+        <a href="{{ ('/login') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Log</span> in</a>
+        @endguest
+        @auth
+        <a href="{{ route('logout') }}" class="appointment-btn btn-danger scrollto" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><span class="d-none d-md-inline">Log</span> out</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+    </div>
+    @endauth
     </div>
 </header><!-- End Header -->
