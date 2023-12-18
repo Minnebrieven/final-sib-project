@@ -19,7 +19,6 @@
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
-
         @guest
         <a href="{{ ('/login') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Log</span> in</a>
         @endguest

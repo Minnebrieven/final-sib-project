@@ -4,14 +4,7 @@
 $ar_judul = ['NO','Nama','Alamat','Telpon','ACTION'];
 $no = 1;
 @endphp
-<h3>Daftar Penjual</h3>
-<div class="row">
-    <div class="col">
-        <a href="{{ route('penjual.create') }}" class="btn btn-primary" title="Tambah Data">
-            <i class="bi bi-clipboard-plus"></i>
-        </a>
-    </div>
-</div>
+<h3>Daftar Berita</h3>
 <br /><br />
 <table class="table table-striped">
     <thead>
@@ -29,10 +22,17 @@ $no = 1;
             <td>{{ $a->alamat}}</td>
             <td>{{ $a->telepon}}</td>
             <td>
-            <a class="btn btn-info" href="{{ route('penjual.show', $a->id) }}" title="Detail Berita">
-                        <i class="bi bi-eye"></i>
-                    </a>
+                <a class="btn btn-warning btn-lg " href="" title="Ubah Berita">
+                    <i class="bi bi-pencil-fill"></i>
+                </a>
             </td>
+            <!-- <td>
+                <form method="POST" action="">
+                    <button type="submit" title="Hapus Asset" class="btn btn-danger btn-sm" name="proses" value="hapus" onclick="return confirm('Anda Yakin diHapus?')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </form>
+            </td> -->
         </tr>
         @endforeach
     </tbody>

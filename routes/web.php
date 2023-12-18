@@ -77,14 +77,6 @@ Route::get('/nonorganik', function () {
     return view('public.nonorganik');
 });
 
-Route::get('/services', function () {
-    return view('public.services');
-});
-
-Route::get('/after-register', function () {
-    return view('public.after_register');
-});
-
 Route::get('/Tim', function () {
     return view('public.Tim');
 });
@@ -93,7 +85,20 @@ Route::get('/contact', function () {
     return view('public.contact');
 });
 
-Auth::routes();
+/*Backend*/
+
+// Route::get('/', function () {
+//     return view('private.dashboard');
+// });
+
+Route::get('/dashboard', function () {
+    return view('private.dashboard');
+});
+
+Route::get('/table', function () {
+    return view('private.table');
+});
+
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
