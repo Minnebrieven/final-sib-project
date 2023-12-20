@@ -3,7 +3,6 @@
 @php
 
 $arrayTitle = ['AUTHOR','JUDUL','LINK','ACTION'];
-
 @endphp
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
