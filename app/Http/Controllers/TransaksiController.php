@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
-use App\Models\Penjual; //panggil model
+use App\Models\Sampah; //panggil model
 use App\Models\JenisSampah; //panggil model
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // jika pakai query builder
 use Illuminate\Database\Eloquent\Model;
+use PDF;
 
 class TransaksiController extends Controller
 {
@@ -16,8 +17,8 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $ar_transaksi = Transaksi::all(); //eloquent
-        return view('private.transaksi.index', compact('ar_transaksi'));
+        $arrayTransaksi = Transaksi::with('user')->get(); //eloquent
+        return view('private.transaksi.index', compact('arrayTransaksi'));
     }
 
     /**
@@ -25,7 +26,9 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        //
+        $arrayJenisSampah = JenisSampah::all();
+        $arraySampah = Sampah::all();
+        return view('public.transaksi.form', compact('arraySampah', 'arrayJenisSampah'));
     }
 
     /**
@@ -41,8 +44,9 @@ class TransaksiController extends Controller
      */
     public function show(string $id)
     {
-        $rs = Transaksi::find($id);
-        return view('private.transaksi.detail', compact('rs'));
+        $sampahArray = Sampah::all();
+        $transaksi = Transaksi::with('detail_transaksi.sampah')->find($id);
+        return view('private.transaksi.detail',compact('transaksi', 'sampahArray'));
     }
 
     /**
@@ -50,7 +54,8 @@ class TransaksiController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $transaksi = Transaksi::find($id);
+        return view('private.transaksi.form', compact('transaksi'));
     }
 
     /**
@@ -67,5 +72,24 @@ class TransaksiController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function generatePDF()
+    {
+        $data = [
+            'title' => 'Data Transaksi',
+            'date' => date('d-m-Y H:i:s')
+        ];
+          
+        $pdf = PDF::loadView('private.transaksi.tesPDF', $data);
+    
+        return $pdf->download('data_tespdf_'.date('d-m-Y_H:i:s').'.pdf');
+    }
+
+    public function transaksiPDF(){
+        $ar_transaksi = transaksi::all();
+        $pdf = PDF::loadView('private.transaksi.transaksiPDF', 
+                              ['ar_transaksi'=>$ar_transaksi]);
+        return $pdf->download('data_transaksi_'.date('d-m-Y_H:i:s').'.pdf');
     }
 }

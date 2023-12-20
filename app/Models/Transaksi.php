@@ -5,28 +5,33 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class Transaksi extends Model
 {
     use HasFactory;
     protected $table = 'transaksi';
-    protected $fillable = ['id_penjualan', 'id_jenis_sampah', 'nama_penjual', 'jenis_sampah', 'jumlah', 'tgl_transaksi', 'alamat', 'foto'];
+    protected $fillable = [
+        'user_id',
+        'tipe_transaksi',
+        'metode_pembayaran_id',
+        'status_bayar',
+        'total_harga'
+    ];
 
-    public $timetamps = false;
-
-    public function jenis_Sampah(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(JenisSampah::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function penjual(): BelongsTo
+    public function metode_pembayaran(): BelongsTo
     {
-        return $this->belongsTo(Penjual::class);
+        return $this->belongsTo(MetodePembayaran::class);
     }
 
-    public function data_transaksi(): BelongsToMany
+    public function detail_transaksi(): HasMany
     {
-        return $this->belongsToMany(data_transaksi::class);
+        return $this->hasMany(DetailTransaksi::class);
     }
 }

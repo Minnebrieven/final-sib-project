@@ -1,7 +1,6 @@
 @extends('private.index')
 @section('content')
 @php
-
 $arrayTitle = ['AUTHOR','JUDUL','LINK','ACTION'];
 @endphp
 <div class="row">
