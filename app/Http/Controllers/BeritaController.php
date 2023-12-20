@@ -10,6 +10,7 @@ use Illuminate\View\View; //panggil model
 use Illuminate\Support\Facades\DB; // jika pakai query builder
 use Illuminate\Database\Eloquent\Model; //jika pakai eloquent
 use App\Http\Controllers\redirect;
+use PDF;
 
 class BeritaController extends Controller
 {
@@ -202,7 +203,7 @@ class BeritaController extends Controller
         Berita::where('id', $id)->delete();
         return redirect()->back();
     }
-  
+
     public function generatePDF()
     {
         $data = [
@@ -221,4 +222,6 @@ class BeritaController extends Controller
                             ['ar_berita'=>$ar_berita]);
         return $pdf->download('data_berita_'.date('d-m-Y_H:i:s').'.pdf');
     }
+
+    
 }

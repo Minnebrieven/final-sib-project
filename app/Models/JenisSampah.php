@@ -13,10 +13,8 @@ class JenisSampah extends Model
     protected $table = 'jenis_sampah';
     protected $fillable = ['jenis_Sampah'];
 
-    public $timetamps = false;
-
-    public function data_transaksi(): HasMany
+    public function sampah(): HasMany
     {
-        return $this->hasMany(DataTransaksi::class);
+        return $this->hasMany(Sampah::class);
     }
 }

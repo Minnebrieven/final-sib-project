@@ -10,26 +10,19 @@
 	</nav>
 </div>
 <div class="row">
-	<br><br>
-	<div class="col-md-6">
-		<center>
-			@empty($rs->foto)
-			<br /><img src="{{ asset('private/assets/img/noimage.png') }}" class="img-fluid rounded-start" />
-			@else
-			<img src="{{ asset('private/assets/img') }}/{{ $rs->foto }}" />
-			@endempty
-		</center>
-	</div>
-	<div class="card" style="width: 18rem;">
+	<div class="card mb-3">
+		@empty($rs->foto)
+		<img src="{{ asset('private/assets/img/noimage.jpg') }}" class="img-fluid rounded-start" width="300px" height="300px"/>
+		@else
+		<img src="{{ asset('private/assets/img') }}/{{ $rs->foto }}"  width="300px" height="300px"/>
+		@endempty
 		<div class="card-body">
-			<h5 class="card-title">{{ $rs->author }}</h5>
-			<p class="card-text">
-				Judul Berita: {{ $rs->judul }}
-				<br />Link Berita: {{ $rs->url }}
-				<br />Deskripsi Berita: {{ $rs->deskripsi }}
-				<br />Tanggal Berita: {{ $rs->tanggal}}
-			</p>
-			<a href="{{ url('/berita') }}" class="btn btn-primary">Go Back</a>
+			<h4><b>{{ $rs->judul }}</b> </h4>
+			<p class="card-text">{{ $rs->deskripsi }} </p>
+			<i class="bi bi-person-circle"> {{ $rs->user->name}}</i>
 		</div>
 	</div>
-	@endsection
+	<a href="{{ url('/berita') }}" class="btn btn-primary btn">Go Back</a>
+
+</div>
+@endsection

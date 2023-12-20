@@ -75,8 +75,6 @@
                 </div>
             </div>
         </div>
-        </br>
-        <a href="{{ url('/menu') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Kembali</a>
 
     </div>
 </section>
