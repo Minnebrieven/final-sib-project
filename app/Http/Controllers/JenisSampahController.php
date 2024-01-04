@@ -21,58 +21,36 @@ class JenisSampahController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create():View
-    {
-        //ambil master data kategori u/ dilooping di select option form
-        $ar_jenis_sampah = JenisSampah::all();
-        return view('private.jenissampah.form', compact('ar_jenis_sampah'));
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate(
             [
-                'jenis_sampah' => 'required',
+                'nama' => 'required|string',
             ],
 
             [
-                'jenis_sampah.required' => 'Nama Wajib Diisi',
+                'nama.required' => 'Nama Wajib Diisi',
+                'nama.string' => 'Nama harus berupa string/huruf'
             ]
             );
             //lakukan insert data dari request form dgn query builder
         try {
-            DB::table('jenis_sampah')->insert([
-                'jenis_sampah' => $request->jenis_sampah,
+            $now = DB::raw('CURRENT_TIMESTAMP');
+            $lastInsertedID = DB::table('jenis_sampah')->insertGetId([
+                'nama' => $request->nama,
+                'created_at' => $now,
+                'updated_at' => $now
             ]);
 
             return redirect()->route('jenissampah.index')
-                ->with('success', 'Data Berita Baru Berhasil Disimpan');
+                ->with('success', 'Data jenis sampah baru berhasil disimpan');
         } catch (\Exception $e) {
             //return redirect()->back()
             return redirect()->route('jenissampah.index')
-                ->with('error', 'Terjadi Kesalahan Saat Input Data!');
+                ->with('error', 'Terjadi Kesalahan Saat Input Data! \n Error: '.$e->getMessage());
         }
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
     }
 
     /**
@@ -80,7 +58,31 @@ class JenisSampahController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate(
+            [
+                'nama' => 'required|string',
+            ],
+
+            [
+                'nama.required' => 'Nama Wajib Diisi',
+                'nama.string' => 'Nama harus berupa string/huruf'
+            ]
+            );
+            //lakukan insert data dari request form dgn query builder
+        try {
+            $now = DB::raw('CURRENT_TIMESTAMP');
+            $lastInsertedID = DB::table('jenis_sampah')->where('id', $id)->update([
+                'nama' => $request->nama,
+                'updated_at' => $now
+            ]);
+
+            return redirect()->route('jenissampah.index')
+                ->with('success', 'Data jenis sampah berhasil diubah');
+        } catch (\Exception $e) {
+            //return redirect()->back()
+            return redirect()->route('jenissampah.index')
+                ->with('error', 'Terjadi kesalahan saat mengubah data! \n Error: '.$e->getMessage());
+        }
     }
 
     /**

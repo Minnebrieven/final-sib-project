@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('jenis_sampah', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

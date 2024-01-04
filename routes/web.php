@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\SampahController;
+use App\Http\Controllers\MetodePembayaranController;
 use App\Http\Controllers\DetailTransaksiController;
 use App\Http\Controllers\JenisSampahController;
 use App\Http\Controllers\KategoriBeritaController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\TransaksiUserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 
@@ -22,7 +24,7 @@ use App\Http\Controllers\UserController;
 */
 
 
-Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');
+Route::get('/dashboard',[DashboardController::class,'index'])->middleware('peran:admin-manager-staff')->name('dashboard');
 
 Route::get('/table', function () {
     return view('private.table');
@@ -41,14 +43,17 @@ Route::get('/generate-pdf', [BeritaController::class, 'generatePDF']);
 Route::get('/berita-pdf', [BeritaController::class, 'beritaPDF']);
 
 
-Route::resource('/berita', BeritaController::class)->middleware('peran:manager-staff');
-Route::resource('/sampah', SampahController::class)->middleware('peran:manager-staff');
-Route::resource('/detail_transaksi', DetailTransaksi::class)->middleware('peran:manager-staff');
-Route::resource('/jenissampah', JenisSampahController::class)->middleware('peran:manager-staff');
-Route::resource('/kategoriberita', KategoriBeritaController::class)->middleware('peran:manager-staff');
-Route::resource('/transaksi', TransaksiController::class)->middleware('peran:manager-staff');
-Route::resource('/metode_pembayaran', MetodePembayaranController::class)->middleware('peran:manager-staff');
+Route::resource('/berita', BeritaController::class)->middleware('peran:admin-manager-staff');
+Route::resource('/sampah', SampahController::class)->middleware('peran:admin-manager-staff');
+Route::resource('/detail_transaksi', DetailTransaksiController::class)->middleware('peran:admin-manager-staff');
+Route::resource('/jenissampah', JenisSampahController::class)->middleware('peran:admin-manager-staff');
+Route::resource('/kategoriberita', KategoriBeritaController::class)->middleware('peran:admin-manager-staff');
+Route::resource('/transaksi', TransaksiController::class)->middleware('peran:admin-manager-staff');
+Route::resource('/metode_pembayaran', MetodePembayaranController::class)->middleware('peran:admin-manager-staff');
+Route::resource('/transaksiku', TransaksiUserController::class)->middleware('auth');
 
+Route::get('/news', [BeritaController::class, 'news']);
+Route::get('/news/{id}', [BeritaController::class, 'showNews']);
 
 
 

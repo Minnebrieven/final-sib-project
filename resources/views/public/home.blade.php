@@ -5,7 +5,7 @@
     <div class="container">
         <h1>Welcome to Ruang Literasi Sampah</h1>
         <h2>Pelayanan penjualan sampah serta informasi-informasi tentang sampah.</h2>
-        <a href="{{ (('/register')) }}" class="btn-get-started scrollto">Register</a>
+        <a href="{{ route('register') }}" class="btn-get-started scrollto">Register</a>
     </div>
     
 </section><!-- End Hero -->
@@ -34,22 +34,22 @@
                         <div class="col-xl-4 d-flex align-items-stretch">
                             <div class="icon-box mt-4 mt-xl-0">
                                 <i class="bx bx-receipt"></i>
-                                <h4>Berita</h4>
-                                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                                <h4>Jual Sampah</h4>
+                                <p>Untuk mengatasi permasalahan umum yang terjadi dimasyarakat global, kami memberikan pelayanan kepada masyarakat untuk menjual sampah yang mereka miliki.</p>
                             </div>
                         </div>
                         <div class="col-xl-4 d-flex align-items-stretch">
                             <div class="icon-box mt-4 mt-xl-0">
                                 <i class="bx bx-cube-alt"></i>
-                                <h4>Berita</h4>
-                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                                <h4>Beli Sampah</h4>
+                                <p>Selain menjual sampah untuk mengatasi permasalahan umum, kami memberikan pelayanan kepada masyarakat agar dapat membeli sampah.</p>
                             </div>
                         </div>
                         <div class="col-xl-4 d-flex align-items-stretch">
                             <div class="icon-box mt-4 mt-xl-0">
                                 <i class="bx bx-images"></i>
                                 <h4>Berita</h4>
-                                <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                                <p>Menyediakan informasi terbaru.</p>
                             </div>
                         </div>
                     </div>

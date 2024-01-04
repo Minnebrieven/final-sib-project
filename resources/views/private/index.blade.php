@@ -9,7 +9,7 @@
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ asset('private/assets/vendors/simple-line-icons/css/simple-line-icons.css') }}">
   <link rel="stylesheet" href="{{ asset('private/assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('private/assets/vendors/css/vendor.bundle.base.') }}">
+  <link rel="stylesheet" href="{{ asset('private/assets/vendors/css/vendor.bundle.base.css') }}">
   <!-- endinject -->
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="{{ asset('private/assets/vendors/daterangepicker/daterangepicker.css') }}">
@@ -22,7 +22,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset('private/assets/css/style.css') }}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="url(assets/images/favicon.png)" />
+    <link rel="shortcut icon" href="{{asset('private/assets/img/logo.png')}}" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -32,6 +32,14 @@
     <!-- container scroller -->
     <div class="container-scroller">
         <!-- ======= Top Bar ======= -->
+        @guest
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth">
+                @yield('content')
+              </div>
+              <!-- content-wrapper ends -->
+        </div>
+        @else
         @include('private.navbar')
         <div class="container-fluid page-body-wrapper ps-0 pe-0">
             <!-- ======= Header ======= -->
@@ -43,6 +51,7 @@
                 @include('private.footer')
             </div>
         </div>
+        @endguest
     </div>
     <!-- end of container-scroller -->
     <!-- plugins:js -->

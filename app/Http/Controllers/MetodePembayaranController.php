@@ -2,26 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MetodePembayaran;
 use Illuminate\Http\Request;
-use App\Models\KategoriBerita;
+use Illuminate\View\View; //panggil model
 use Illuminate\Support\Facades\DB; // jika pakai query builder
-use Illuminate\Database\Eloquent\Model; //panggil model
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\RedirectResponse;
 
-class KategoriBeritaController extends Controller
+class MetodePembayaranController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $ar_kategoriberita = KategoriBerita::all();//eloquent
-        return view('private.kategoriberita.index', compact('ar_kategoriberita'));
+        $arrayMetodePembayaran = MetodePembayaran::all();//eloquent
+        return view('private.metode_pembayaran.index', compact('arrayMetodePembayaran'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate(
             [
@@ -36,17 +38,17 @@ class KategoriBeritaController extends Controller
             //lakukan insert data dari request form dgn query builder
         try {
             $now = DB::raw('CURRENT_TIMESTAMP');
-            $lastInsertedID = DB::table('kategori_berita')->insertGetId([
+            $lastInsertedID = DB::table('metode_pembayaran')->insertGetId([
                 'nama' => $request->nama,
                 'created_at' => $now,
                 'updated_at' => $now
             ]);
 
-            return redirect()->route('kategoriberita.index')
-                ->with('success', 'kategori berita baru berhasil disimpan ID:'.$lastInsertedID);
+            return redirect()->route('metode_pembayaran.index')
+                ->with('success', 'metode pembayaran baru berhasil disimpan ID:'.$lastInsertedID);
         } catch (\Exception $e) {
             //return redirect()->back()
-            return redirect()->route('kategoriberita.index')
+            return redirect()->route('metode_pembayaran.index')
                 ->with('error', 'Terjadi Kesalahan Saat Input Data! \n Error: '.$e->getMessage());
         }
     }
@@ -69,17 +71,17 @@ class KategoriBeritaController extends Controller
             //lakukan insert data dari request form dgn query builder
         try {
             $now = DB::raw('CURRENT_TIMESTAMP');
-            $lastInsertedID = DB::table('kategori_berita')->where('id', $id)->update([
+            $lastInsertedID = DB::table('metode_pembayaran')->where('id', $id)->update([
                 'nama' => $request->nama,
                 'updated_at' => $now
             ]);
 
-            return redirect()->route('kategoriberita.index')
-                ->with('success', 'kategori berita berhasil diubah ID:'.$lastInsertedID);
+            return redirect()->route('metode_pembayaran.index')
+                ->with('success', 'metode pembayaran berhasil diubah ID:'.$lastInsertedID);
         } catch (\Exception $e) {
             //return redirect()->back()
-            return redirect()->route('kategoriberita.index')
-                ->with('error', 'Terjadi kesalahan saat mengubah data! \n Error: '.$e->getMessage());
+            return redirect()->route('metode_pembayaran.index')
+                ->with('error', 'terjadi kesalahan saat mengubah data! \n Error: '.$e->getMessage());
         }
     }
 

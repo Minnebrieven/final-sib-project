@@ -1,35 +1,64 @@
 @extends('private.index')
 @section('content')
+<div class="page-header">
+	<h3 class="page-title"> Detail Sampah </h3>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{{ route('sampah.index') }}">Sampah</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Detail Sampah</li>
+		</ol>
+	</nav>
+</div>
 <div class="row mt-3">
-	<div class="card" style="width: 18rem;">
-		<div class="card-body">
-			<h5 class="card-title">{{ $sampah->nama }}</h5>
-			<p class="card-text">
-				<span>{{ $sampah->jenis_sampah->nama }}</span>
-				<br/>
-				Harga : Rp. {{ number_format($sampah->harga,0,',','.') }}/{{ $sampah->satuan }}
-			</p>
-			<a href="{{ route('sampah.index') }}" class="btn btn-primary">Go Back</a>
+	<div class="col-12">
+		<div class="card" style="width: auto;">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-6 mb-3">
+						<div class="d-flex flex-row align-items-center">
+							<i class="bi bi-trash icon-md text-info"></i>
+							<div class="row ml-1">
+								<div class="col-12">
+									<h4 class="mb-0"> {{ $sampah->nama }}</h4>
+								</div>
+								<div class="col-12">
+									<small class="text-muted mb-0">Nama Sampah</small>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-6 mb-3">
+						<div class="d-flex flex-row align-items-center">
+							<i class="bi bi-recycle icon-md text-info"></i>
+							<div class="row ml-1">
+								<div class="col-12">
+									<h4 class="mb-0"> {{ $sampah->jenis_sampah->nama }}</h4>
+								</div>
+								<div class="col-12">
+									<small class="text-muted mb-0">Jenis Sampah</small>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-6 mb-3">
+						<div class="d-flex flex-row align-items-center">
+							<i class="bi bi-person-circle icon-md text-info"></i>
+							<div class="row ml-1">
+								<div class="col-12">
+									<h4 class="mb-0"> Rp. {{ number_format($sampah->harga,0,',','.') }}/{{ $sampah->satuan }}</h4>
+								</div>
+								<div class="col-12">
+									<small class="text-muted mb-0">Harga/Satuan</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-	<!-- <div class="col-md-6">
-		<center>
-			@empty($sampah->foto)
-			<br /><img src="{{ asset('private/assets/img/noimage.png') }}" class="img-fluid rounded-start" />
-			@else
-			<img src="{{ asset('private/assets/img') }}/{{ $sampah->foto }}" />
-			@endempty
-		</center>
+	<div class="col-12 mt-3">
+		<a href="{{ url()->previous() }}" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Go Back</a>
 	</div>
-	<div class="card" style="width: 18rem;">
-		<div class="card-body">
-			<h5 class="card-title">{{ $sampah->author }}</h5>
-			<p class="card-text">
-				Judul Berita: {{ $sampah->judul }}
-				<br />Link Berita: {{ $sampah->url }}
-				<br />Deskripsi Berita: {{ $sampah->deskripsi }}
-				<br />Tanggal Berita: {{ $sampah->tanggal}}
-			</p>
-		</div>
-	</div> -->
-	@endsection
+</div>
+@endsection
