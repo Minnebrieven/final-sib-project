@@ -2,6 +2,7 @@
 @section('content')
     @php
         $arrayTitle = ['Nama', 'Jenis Sampah', 'Harga', 'ACTION'];
+        $userRole = Auth::user()->role;
     @endphp
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
@@ -10,13 +11,15 @@
                 <div class="row">
                     <div class="col-6"><h3>Daftar Sampah</h3></div>
                     <div class="col-6">
+                        @if ($userRole == "admin" || $userRole == "manager")
                         <div class="float-end">
-                            <a href="{{ route('sampah.create') }}" class="btn btn-primary btn-icon-text">
-                                <i class="bi bi-clipboard-plus btn-icon-prepend"></i> Tambah Data </a>
+                          <a href="{{ route('sampah.create') }}" class="btn btn-primary btn-icon-text">
+                            <i class="bi bi-clipboard-plus btn-icon-prepend"></i> Tambah Data </a>
                         </div>
+                        @endif
                     </div>
                 </div>
-                <p class="card-description"> tabel data sampah 
+                <p class="card-description"> tabel data sampah
                 </p>
                 <table class="table table-hover">
                   <thead>
@@ -34,14 +37,18 @@
                         <td>Rp. {{ number_format($sampah->harga, 0, ',', '.') }}/{{ $sampah->satuan }}</td>
                         <td>
                             <a class="btn btn-sm btn-info" href="{{ route('sampah.show', $sampah->id) }}" title="Detail Sampah"><i class="icon-eye"></i></a>
+                            @if ($userRole == "admin" || $userRole == "manager")
                             <a class="btn btn-sm btn-warning" href="{{ route('sampah.edit', $sampah->id) }}" title="Detail Sampah"><i class="icon-pencil"></i></a>
+                            @endif
+                            @if ($userRole == "admin" || $userRole == "manager")
                             <form method="POST" action="{{ route('sampah.destroy', $sampah->id) }}" style="all:unset">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" title="Hapus Sampah" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus data?')">
-                                    <i class="icon-trash"></i>
-                                </button>
-                            </form>
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" title="Hapus Sampah" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus data?')">
+                                  <i class="icon-trash"></i>
+                              </button>
+                          </form>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

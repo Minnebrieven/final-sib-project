@@ -1,7 +1,10 @@
 @extends('private.index')
 @section('content')
+@php
+$userRole = Auth::user()->role;
+@endphp
     @php
-        $arrayTitle = ['Tipe Transaksi', 'Penjual/Pembeli', 'Total Harga', 'Status Pembayaran', 'ACTION'];
+        $arrayTitle = ['Tipe Transaksi', 'Penjual/Pembeli', 'Total Harga', 'Status Pembayaran', 'Tanggal Transaksi', 'ACTION'];
     @endphp
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
@@ -13,7 +16,7 @@
                         </div>
                         <div class="col-6">
                             <div class="float-end">
-                                <a href="{{ route('transaksi.create') }}" class="btn btn-primary btn-icon-text">
+                                <a href="{{ route('transaksiku.create') }}" class="btn btn-primary btn-icon-text">
                                     <i class="icon-plus btn-icon-prepend"></i> Tambah Data </a>
                             </div>
                         </div>
@@ -35,6 +38,7 @@
                                     <td>{{ $transaksi->user->name }}</td>
                                     <td>Rp. {{ number_format($transaksi->total_harga, 0, ',', '.') }}</td>
                                     <td><label class="badge {{ $transaksi->status_bayar == 'sudah bayar' ? 'badge-success' : 'badge-danger' }}">{{ ucwords($transaksi->status_bayar) }}</label></td>
+                                    <td>{{ $transaksi->created_at->toDayDateTimeString() }}</td>
                                     <td>
                                         <a class="btn btn-sm btn-info" href="{{ route('transaksi.show', $transaksi->id) }}"
                                             title="Detail Transaksi">
@@ -44,6 +48,7 @@
                                             href="{{ route('transaksi.edit', $transaksi->id) }}" title="Edit Transaksi">
                                             <i class="icon-pencil"></i>
                                         </a>
+                                        @if ($userRole == "admin" || $userRole == "manager")
                                         <form method="POST" action="{{ route('transaksi.destroy', $transaksi->id) }}" style="all:unset">
                                             @csrf
                                             @method('DELETE')
@@ -51,6 +56,7 @@
                                                 <i class="icon-trash"></i>
                                             </button>
                                         </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

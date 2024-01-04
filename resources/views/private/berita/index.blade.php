@@ -1,7 +1,7 @@
 @extends('private.index')
 @section('content')
 @php
-$arrayTitle = ['AUTHOR','JUDUL','LINK','ACTION'];
+$arrayTitle = ['AUTHOR','JUDUL','TANGGAL DIBUAT','ACTION'];
 @endphp
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
@@ -13,15 +13,10 @@ $arrayTitle = ['AUTHOR','JUDUL','LINK','ACTION'];
                     </div>
                     <div class="col-6">
                         <div class="float-end">
-                            <a href="{{ route('berita.create') }}" class="btn btn-primary btn-icon-text">
-                                <i class="icon-plus btn-icon-prepend"></i> Tambah Data </a>
+                            <a href="{{ route('berita.create') }}" class="btn btn-primary btn-icon-text"><i class="icon-plus btn-icon-prepend"></i> Tambah Data </a>
                         </div>
-                        <div class="">
-                            <div class="float-end">
-                                <a href="{{ url('/berita-pdf') }}" class="btn btn-danger" title="Export to PDF">
-                                    <i class="bi bi-file-earmark-pdf-fill">Dwonload PDF</i>
-                                </a>
-                            </div>
+                        <div class="float-end">
+                            <a href="{{ url('/berita-pdf') }}" class="btn btn-danger" title="Export to PDF"><i class="bi bi-file-earmark-pdf-fill">Download PDF</i></a>
                         </div>
                     </div>
                 </div>

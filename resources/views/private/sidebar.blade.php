@@ -48,6 +48,12 @@
                   <i class="icon-grid menu-icon"></i>
                 </a>
               </li>
+              <li class="nav-item nav-category"><span class="nav-link">Back to Main Page</span></li>
+              <li class="nav-item">
+                <a class="btn btn-primary btn-block" href="{{url('/home')}}">
+                <i class="bi bi-arrow-left-circle"></i> Kembali 
+                </a>
+              </li>
             </ul>
           </nav>
         <!-- partial -->

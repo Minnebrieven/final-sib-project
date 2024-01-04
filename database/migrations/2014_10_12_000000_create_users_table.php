@@ -21,7 +21,8 @@ return new class extends Migration
             $table->enum('isactive', ['yes', 'no','banned'])->default('yes');
             $table->string('foto')->nullable();
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

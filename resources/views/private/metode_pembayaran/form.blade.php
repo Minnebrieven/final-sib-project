@@ -11,19 +11,13 @@
                 </ul>
             </div>
         @endif
-        <h5 class="card-title">Form Penjual</h5>
+        <h5 class="card-title">Form Kategori Berita</h5>
         <!-- No Labels Form -->
-        <form class="row g-3" method="POST" action="{{ route('penjual.store') }}"
+        <form class="row g-3" method="POST" action="{{ route('kategoriberita.store') }}"
             enctype="multipart/form-data">
             @csrf
             <div class="col-md-12">
-                <input type="text" class="form-control" name="nama" placeholder="nama">
-            </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control" name="alamat" placeholder="Alamat">
-            </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control" name="telepon" placeholder="Telepon">
+                <input type="text" class="form-control" name="kategoriberita" placeholder="Kategori Berita">
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Simpan</button>

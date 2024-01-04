@@ -3,7 +3,12 @@
     <script>
         var doughnutPieData = {
             datasets: [{
-                data: [@foreach ($chart as $ch) '{{ $ch->jumlah }}', @endforeach],
+                data: [
+                @foreach ($chart as $key => $ch) 
+                    @if ($key != "total")
+                    '{{ $ch }}', 
+                    @endif
+                @endforeach],
                 backgroundColor: [
                     '#ffca00',
                     '#38ce3c',
@@ -17,7 +22,7 @@
             }],
 
             // These labels appear in the legend and in the tooltips when hovering different arcs
-            labels: [@foreach ($chart as $ch) '{{ $ch->jenis_sampah }}', @endforeach]
+            labels: [@foreach ($chart as $key) '{{ $key }}', @endforeach]
         };
         var doughnutPieOptions = {
             cutoutPercentage: 75,
@@ -59,18 +64,18 @@
                 </div>
                 <div class="d-md-flex row m-0 quick-action-btns" role="group" aria-label="Quick action buttons">
                     <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                        <button class="btn px-0"> <i class="icon-user mr-2"></i>Tambah User</button>
+                        <button class="btn px-0" {{ Auth::user()->role != 'admin'? 'disabled':'' }}> <i class="icon-user mr-2"></i>Tambah User</button>
                     </div>
                     <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                        <button onclick="location.href = '{{ route('jenissampah.create') }}';" class="btn px-0"><i
+                        <button onclick="location.href = '{{ route('jenissampah.create') }}';" class="btn px-0" {{ Auth::user()->role == 'admin'? '':'disabled' }}><i
                                 class="icon-docs mr-2"></i>Tambah Jenis Sampah</button>
                     </div>
                     <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                        <button onclick="location.href = '{{ route('transaksi.create') }}';" class="btn px-0"><i
+                        <button onclick="location.href = '{{ route('transaksi.create') }}';" class="btn px-0" {{ Auth::user()->role == 'admin' || 'manager' || 'staff' ? '':'disabled' }}><i
                                 class="icon-folder mr-2"></i>Tambah Transaksi</button>
                     </div>
                     <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                        <button onclick="location.href = '{{ route('berita.create') }}';" class="btn px-0"><i
+                        <button onclick="location.href = '{{ route('berita.create') }}';" class="btn px-0" {{ Auth::user()->role == 'admin' || 'manager' || 'staff'? '':'disabled' }}><i
                                 class="icon-book-open mr-2"></i>Tambah Berita</button>
                     </div>
                 </div>
@@ -90,16 +95,25 @@
                         </div>
                     </div>
                     <div class="row report-inner-cards-wrapper">
-                        <div class=" col-md-6 col-xl report-inner-card">
+                        <div class=" col-md-3 col-xl report-inner-card">
                             <div class="inner-card-text">
-                                <span class="report-title">Total Transaksi</span>
-                                <h4>Rp. {{ number_format($reportSummary['totalHargaTransaksi'], 2, ',', '.') }}</h4>
+                                <span class="report-title">Total Transaksi Jual</span>
+                                <h4>Rp. {{ number_format($reportSummary['totalHargaTransaksiJual'], 2, ',', '.') }}</h4>
+                            </div>
+                            <div class="inner-card-icon bg-danger">
+                                <i class="icon-chart"></i>
+                            </div>
+                        </div>
+                        <div class=" col-md-3 col-xl report-inner-card">
+                            <div class="inner-card-text">
+                                <span class="report-title">Total Transaksi Beli</span>
+                                <h4>Rp. {{ number_format($reportSummary['totalHargaTransaksiBeli'], 2, ',', '.') }}</h4>
                             </div>
                             <div class="inner-card-icon bg-success">
                                 <i class="icon-rocket"></i>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl report-inner-card">
+                        <div class="col-md-3 col-xl report-inner-card">
                             <div class="inner-card-text">
                                 <span class="report-title">Jumlah Transaksi</span>
                                 <h4>{{ $reportSummary['jumlahTransaksi'] }}</h4>
@@ -108,7 +122,7 @@
                                 <i class="icon-briefcase"></i>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl report-inner-card">
+                        <div class="col-md-3 col-xl report-inner-card">
                             <div class="inner-card-text">
                                 <span class="report-title">Sampah Terkumpul</span>
                                 <h4>{{ $reportSummary['totalSampah'] }}</h4>
@@ -138,7 +152,7 @@
                         </div>
                         <canvas id="doughnutChart" height="210"></canvas>
                         <div class="wrapper d-flex flex-column justify-content-center absolute absolute-center">
-                            <h2 class="text-center mb-0 font-weight-bold">{{ $chartTotal }}</h2>
+                            <h2 class="text-center mb-0 font-weight-bold">{{ $chart['total'] }}</h2>
                             <small class="d-block text-center text-muted  font-weight-semibold mb-0">Total</small>
                         </div>
                     </div>
@@ -223,8 +237,8 @@
                                     <td>{{ $transaksi->user->name }}</td>
                                     <td>Rp. {{ number_format($transaksi->total_harga, 0, ',', '.') }}</td>
                                     <td><label class="badge {{ $transaksi->status_bayar == 'sudah bayar' ? 'badge-success' : 'badge-danger' }}">{{ ucwords($transaksi->status_bayar) }}</label></td>
-                                    <td>
-                                    </tr>
+                                    <td>{{ $transaksi->created_at->toDayDateTimeString() }}</td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

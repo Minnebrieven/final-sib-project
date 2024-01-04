@@ -19,7 +19,8 @@ return new class extends Migration
             )->onUpdate('cascade')->onDelete('cascade');
             $table->string('satuan');
             $table->double('harga', 8, 3);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

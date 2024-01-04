@@ -20,7 +20,8 @@ return new class extends Migration
                 table: 'sampah', indexName: 'detail_transaksi_sampah_id'
             )->onUpdate('cascade')->onDelete('cascade');
             $table->integer('jumlah');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

@@ -221,7 +221,15 @@ class BeritaController extends Controller
         $pdf = PDF::loadView('private.berita.beritaPDF', 
                             ['ar_berita'=>$ar_berita]);
         return $pdf->download('data_berita_'.date('d-m-Y_H:i:s').'.pdf');
+    }   
+    
+    public function news(){
+        $beritaArray = Berita::with('kategori_berita')->orderBy('created_at', 'DESC')->get(); //eloquent
+        return view('public.berita.index', compact('beritaArray'));
     }
 
-    
+    public function showNews(string $id){
+        $berita = Berita::with('kategori_berita')->find($id); //eloquent
+        return view('public.berita.detail', compact('berita'));
+    }
 }

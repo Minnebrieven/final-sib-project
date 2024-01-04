@@ -1,58 +1,106 @@
 @extends('private.index')
 @section('content')
-<div class="card">
-    <div class="card-body">
-        @if($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <h5 class="card-title">Form Edit Berita</h5>
-        <!-- No Labels Form -->
-        <form method="POST" action="{{ route('berita.update',$row->id) }}" 
-        enctype="multipart/form-data">
-        @csrf
-        @method('PUT') 
-        <div class="col-md-12">
-                <select name="kategori" class="form-select">
-                    <option>-- Pilih Kategori Berita --</option>
-                    @foreach($ar_kategori as $k)
-                        @php 
-                        $sel = ($k->id == $row->kategori) ? 'selected' : ''; 
-                        @endphp
-                        <option value="{{ $k->id }}" {{ $sel }}>{{ $k->nama }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-12">
-                <input type="text" class="form-control" name="author" value="{{ $row->author }}" placeholder="Author">
-            </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control" name="judul" value="{{ $row->judul }}" placeholder="Judul">
-            </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control" name="link" value="{{ $row->link }}" placeholder="link">
-            </div>
-            <div class="col-6">
-                <label for="basic-url" class="form-label">Deskripsi</label>
-                <textarea class="form-control" name="deskripsi" cols="50" rows="5"></textarea>
-            </div>
-            <div class="col-md-6">
-                <input type="date" class="form-control" name="tanggal" value="{{ $row->tanggal }}" placeholder="Tanggal">
-            </div>
-            <div class="col-md-6">
-                <label for="basic-url" class="form-label">Foto</label>
-                <input type="file" class="form-control" name="foto" />
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Simpan</button>
-                <button type="reset" class="btn btn-secondary">Batal</button>
-            </div>
-        </form><!-- End No Labels Form -->
+    <div class="page-header">
+        <h3 class="page-title"> Edit Transaksi </h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('transaksi.index') }}">Transaksi</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Transaksi</li>
+            </ol>
+        </nav>
     </div>
-</div>
+    <div class="row">
+        <div class="col-12">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </div>
+    </div>
+    @php
+        $tipeTransaksi = ['jual', 'beli'];
+        $statusBayar = ['belum bayar', 'sudah bayar'];
+    @endphp
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" action="{{ route('transaksi.update', $transaksi->id) }}" class="forms-sample">
+                        @csrf
+                        @method('PUT')
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="tipe_transaksi">Tipe Transaksi</label>
+                                    <select name="tipe_transaksi" class="form-select" id="tipe_transaksi">
+                                        <option>- Tipe Transaksi -</option>
+                                        @foreach ($tipeTransaksi as $tipe)
+                                            <option value="{{ $tipe }}"
+                                                {{ $transaksi->tipe_transaksi == $tipe ? 'selected' : '' }}>
+                                                {{ ucwords($tipe) }} Sampah
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="inputNama">Nama Penjual/Pembeli</label>
+                                    <input type="text" class="form-control" id="inputNama"
+                                        value="{{ $transaksi->user->name }}" disabled>
+                                    <input type="hidden" name="user_id" value="{{$transaksi->user->id}}">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="metode_pembayaran">Metode Pembayaran</label>
+                                    <select name="metode_pembayaran_id" class="form-select" id="metode_pembayaran">
+                                        <option>- Metode Pembayaran -</option>
+                                        @foreach ($arrayMetodePembayaran as $metodePembayaran)
+                                            <option value="{{ $metodePembayaran->id }}"
+                                                {{ $transaksi->metode_pembayaran->id == $metodePembayaran->id ? 'selected' : '' }}>
+                                                {{ $metodePembayaran->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="status_bayar">Status Bayar</label>
+                                    <select name="status_bayar" class="form-select" id="status_bayar">
+                                        <option>- Status Bayar -</option>
+                                        @foreach ($statusBayar as $status)
+                                            <option value="{{ $status }}"
+                                                {{ $transaksi->status_bayar == $status ? 'selected' : '' }}>
+                                                {{ ucwords($status) }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="total_harga">Total Harga</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Rp.</span>
+                                        </div>
+                                        <input type="number" class="form-control" id="total_harga" name="total_harga"
+                                            value="{{ $transaksi->total_harga }}" placeholder="500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button type="reset" class="btn btn-light">Reset</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

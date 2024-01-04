@@ -1605,8 +1605,7 @@ section {
 
 .doctors .member .pic {
     overflow: hidden;
-    width: 180px;
-    border-radius: 50%;
+    max-width: 6rem;
 }
 
 .doctors .member .pic img {

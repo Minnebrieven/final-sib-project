@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 Use Exception;
 
 class DatabaseSeeder extends Seeder
@@ -19,9 +20,18 @@ class DatabaseSeeder extends Seeder
         try {
             $userSeeder = DB::table('users')->where('name', 'Test User')->get();
             $userSeederID = $userSeeder[0]->id;
+            $adminSeederID = DB::table('users')->where('name', 'administrator')->get();
+            $adminSeederID = $adminSeederID[0]->id;
+            $managerSeederID = DB::table('users')->where('name', 'administrator')->get();
+            $managerSeederID = $managerSeederID[0]->id;
+            $staffSeederID = DB::table('users')->where('name', 'staff')->get();
+            $staffSeederID = $staffSeederID[0]->id;
         }
         catch(Exception $e) {
-            $userSeederID = DB::table('users')->insertGetID(['name' => 'Test User','email' => 'test@example.com', 'password' => 'asassaas']);
+            $userSeederID = DB::table('users')->insertGetID(['name' => 'Test User','email' => 'test@example.com', 'password' => Hash::make('testuser123'), 'role' => 'pelanggan']);
+            $adminSeederID = DB::table('users')->insertGetID(['name' => 'admin','email' => 'admin@gmail.com', 'password' => Hash::make('admin123'), 'role' => 'admin' ]);
+            $managerSeederID = DB::table('users')->insertGetID(['name' => 'manager','email' => 'manager@gmail.com', 'password' => Hash::make('manager123'), 'role' => 'manager']);
+            $staffSeederID = DB::table('users')->insertGetID(['name' => 'staff','email' => 'staff@gmail.com', 'password' => Hash::make('staff123'), 'role' => 'staff']);
         }
 
         // Start of Seeding Master Data
