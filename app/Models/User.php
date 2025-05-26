@@ -44,9 +44,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function transaksi(): HasMany
+    public function rekening(): HasMany
     {
-        return $this->hasMany(Transaksi::class);
+        return $this->hasMany(Rekening::class);
     }
 
     public function berita(): HasMany

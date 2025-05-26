@@ -57,32 +57,33 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3>Literasi Sampah</h3>
+                    <h3>Trashic</h3>
                     <p>
                         Kampus Merdeka X MSIB <br>
                         Tanggerang, NF Computer<br>
                         Indonesia <br><br>
                         <strong>Phone:</strong> +62 853 2676 2688<br>
-                        <strong>Email:</strong> info@literasisampah.com<br>
+                        <strong>Email:</strong> info@banksampah.com<br>
                     </p>
                 </div>
 
                 <div class="col-lg-2 col-md-6 footer-links">
-                    <h4>Useful Links</h4>
+                    <h4>Link Berguna</h4>
                     <ul>
                         <li><i class="bx bx-chevron-right"></i> <a href="home">Home</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="menu">Menu</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="menu">Sampah</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="organik">Sampah Organik</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="nonorganik">Sampah Nonorganik</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="Tim">Tim</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>Our Services</h4>
+                    <h4>Layanan Kami</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Penjualan</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Berita</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ route('setoran.create') }}">Setoran</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ route('penarikan.create') }}">Tarik Saldo</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ route('hadiah.list') }}">Tukar Hadiah</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/berita') }}">Berita</a></li>
                     </ul>
                 </div>
 
@@ -94,7 +95,7 @@
 
         <div class="me-md-auto text-center text-md-start">
             <div class="copyright">
-                &copy; Copyright <strong><span>GRUP 2</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>Fikri</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->

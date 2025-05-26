@@ -1,7 +1,7 @@
 @extends('private.index')
 @section('content')
     @php
-        $arrayTitle = ['Nama', 'Jenis Sampah', 'Harga', 'ACTION'];
+        $arrayTitle = ['Nama', 'Kategori Sampah', 'Jenis Sampah', 'Score/satuan', 'Coin/satuan', 'Harga', 'ACTION'];
         $userRole = Auth::user()->role;
     @endphp
     <div class="row">
@@ -33,7 +33,10 @@
                     @foreach ($arraySampah as $sampah)
                     <tr>
                         <td>{{ $sampah->nama }}</td>
-                        <td>{{ $sampah->jenis_sampah->nama }}</td>
+                        <td>{{ $sampah->kategori_sampah->nama }}</td>
+                        <td>{{ $sampah->kategori_sampah->jenis_sampah->nama }}</td>
+                        <td>{{ (!empty($sampah->score) ? $sampah->score.'/'.$sampah->satuan : '-') }}</td>
+                        <td>{{ (!empty($sampah->coin) ? $sampah->coin.' TC/'.$sampah->satuan : '-' ) }}</td>
                         <td>Rp. {{ number_format($sampah->harga, 0, ',', '.') }}/{{ $sampah->satuan }}</td>
                         <td>
                             <a class="btn btn-sm btn-info" href="{{ route('sampah.show', $sampah->id) }}" title="Detail Sampah"><i class="icon-eye"></i></a>

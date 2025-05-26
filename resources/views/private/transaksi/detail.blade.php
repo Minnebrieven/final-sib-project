@@ -32,10 +32,10 @@ $userRole = Auth::user()->role;
                     <div class="row">
                         <div class="col-6 mb-3 mb-3">
                             <div class="d-flex flex-row align-items-center">
-                                <i class="bi bi-tags icon-md text-{{ $transaksi->tipe_transaksi == 'jual' ? 'danger' : 'success' }}"></i>
+                                <i class="bi bi-tags icon-md text-success"></i>
                                 <div class="row ml-1">
                                     <div class="col-12">
-                                        <h4 class="mb-0"> {{ ucfirst($transaksi->tipe_transaksi) }} Sampah</h4>
+                                        <h4 class="mb-0"> {{ (!empty($logTransaksi->setoran_id) ? 'Setoran' : 'Penarikan') }} </h4>
                                     </div>
                                     <div class="col-12">
                                         <small class="text-muted mb-0">Tipe Transaksi</small>
@@ -48,20 +48,21 @@ $userRole = Auth::user()->role;
                                 <i class="bi bi-person-circle icon-md text-info"></i>
                                 <div class="row ml-1">
                                     <div class="col-12">
-                                        <h4 class="mb-0"> {{ $transaksi->user->name }}</h4>
+                                        <h4 class="mb-0"> {{ $logTransaksi->rekening->user->name }}</h4>
                                     </div>
                                     <div class="col-12">
-                                        <small class="text-muted mb-0">Penjual/Pembeli</small>
+                                        <small class="text-muted mb-0">Nasabah</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @if (!empty($logTransaksi->penarikan_id)) 
                         <div class="col-6 mb-3">
                             <div class="d-flex flex-row align-items-center">
                                 <i class="bi bi-credit-card icon-md text-info"></i>
                                 <div class="row ml-1">
                                     <div class="col-12">
-                                        <h4 class="mb-0"> {{ $transaksi->metode_pembayaran->nama }}</h4>
+                                        <h4 class="mb-0"> {{ $logTransaksi->penarikan->metode_pembayaran->nama }} </h4>
                                     </div>
                                     <div class="col-12">
                                         <small class="text-muted mb-0">Metode Pembayaran</small>
@@ -69,12 +70,13 @@ $userRole = Auth::user()->role;
                                 </div>
                             </div>
                         </div>
+                        @endif
                         <div class="col-6 mb-3">
                             <div class="d-flex flex-row align-items-center">
                                 <i class="bi bi-cash-coin icon-md text-success"></i>
                                 <div class="row ml-1">
                                     <div class="col-12">
-                                        <h4 class="mb-0">Rp. {{ number_format($transaksi->total_harga, 0, ',', '.') }}
+                                        <h4 class="mb-0">Rp. {{ (!empty($logTransaksi->setoran_id) ? number_format($logTransaksi->setoran->total_harga, 0, ',', '.') : number_format($logTransaksi->penarikan->total_harga, 0, ',', '.') ) }}
                                         </h4>
                                     </div>
                                     <div class="col-12">
@@ -86,25 +88,53 @@ $userRole = Auth::user()->role;
                         <div class="col-6 mb-3">
                             <div class="d-flex flex-row align-items-center">
                                 <i
-                                    class="bi bi-patch-{{ $transaksi->status_bayar == 'sudah bayar' ? 'check icon-md text-success' : 'exclamation icon-md text-danger' }}"></i>
+                                    class="bi bi-patch-{{ $logTransaksi->status == 'diterima' ? 'check icon-md text-success' : ($logTransaksi->status == 'belum diterima' ? 'exclamation icon-md text-warning' : 'exclamation icon-md text-danger')}}"></i>
                                 <div class="row ml-1">
                                     <div class="col-12">
-                                        <h4 class="mb-0"><label
-                                                class="badge {{ $transaksi->status_bayar == 'sudah bayar' ? 'badge-success' : 'badge-danger' }}">{{ ucwords($transaksi->status_bayar) }}</label>
+                                        <h4 class="mb-0">
+                                            <label class="badge {{ $logTransaksi->status == 'diterima' ? 'badge-success' : ($logTransaksi->status == 'belum diterima' ? 'badge-warning' : 'badge-danger') }}">{{ ucwords($logTransaksi->status) }}</label>
                                         </h4>
                                     </div>
                                     <div class="col-12">
-                                        <small class="text-muted mb-0">Status Bayar</small>
+                                        <small class="text-muted mb-0">Status</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @if (!empty($logTransaksi->setoran_id))
+                        <div class="col-6 mb-3">
+                            <div class="d-flex flex-row align-items-center">
+                                <i class="bi bi-award icon-md text-info"></i>
+                                <div class="row ml-1">
+                                    <div class="col-12">
+                                        <h4 class="mb-0"> {{ $logTransaksi->setoran->total_score }} </h4>
+                                    </div>
+                                    <div class="col-12">
+                                        <small class="text-muted mb-0">Total Score</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-6 mb-3">
                             <div class="d-flex flex-row align-items-center">
+                                <i class="bi bi-coin icon-md text-success"></i>
+                                <div class="row ml-1">
+                                    <div class="col-12">
+                                        <h4 class="mb-0"> {{ $logTransaksi->setoran->total_coin }} TC</h4>
+                                    </div>
+                                    <div class="col-12">
+                                        <small class="text-muted mb-0">Total Coin</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        <div class="col-6 mb-3">
+                            <div class="d-flex flex-row align-items-center">
                                 <i class="bi bi-calendar2-week icon-md text-info"></i>
                                 <div class="row ml-1">
                                     <div class="col-12">
-                                        <h4 class="mb-0"> {{ $transaksi->created_at->toFormattedDateString() }}</h4>
+                                        <h4 class="mb-0"> {{ $logTransaksi->created_at->toFormattedDateString() }}</h4>
                                     </div>
                                     <div class="col-12">
                                         <small class="text-muted mb-0">Tanggal Transaksi</small>
@@ -114,13 +144,14 @@ $userRole = Auth::user()->role;
                         </div>
                     </div>
                     <br>
+                    @if (!empty($logTransaksi->setoran_id))
                     <div class="row">
                         <div class="col-12">
                             <h3>Tabel Item Transaksi</h3>
                         </div>
                         <div class="col-12">
                             @php
-                                $arrayTitle = ['Sampah', 'Jumlah', 'Harga Satuan', 'Total', 'ACTION'];
+                                $arrayTitle = ['Sampah', 'Score/sampah', 'Coin/sampah', 'Harga Satuan', 'Jumlah', 'Total', 'ACTION'];
                             @endphp
                             <table class="table table-hover">
                                 <thead>
@@ -131,30 +162,32 @@ $userRole = Auth::user()->role;
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($transaksi->detail_transaksi as $detailTransaksi)
+                                    @foreach ($logTransaksi->setoran->detail_setoran as $detailSetoran)
                                         <tr>
-                                            <td>{{ ucfirst($detailTransaksi->sampah->nama) }}</td>
-                                            <td>{{ $detailTransaksi->jumlah }}</td>
+                                            <td>{{ ucfirst($detailSetoran->sampah->nama) }}</td>
+                                            <td>{{ $detailSetoran->sampah->score }}</td>
+                                            <td>{{ $detailSetoran->sampah->coin }}</td>
                                             <td>Rp.
-                                                {{ number_format($detailTransaksi->sampah->harga, 0, ',', '.') }}/{{ $detailTransaksi->sampah->satuan }}
+                                                {{ number_format($detailSetoran->sampah->harga, 0, ',', '.') }}/{{ $detailSetoran->sampah->satuan }}
                                             </td>
+                                            <td>{{ $detailSetoran->jumlah }}</td>
                                             <td>Rp.
-                                                {{ number_format($detailTransaksi->jumlah * $detailTransaksi->sampah->harga, 0, ',', '.') }}
+                                                {{ number_format($detailSetoran->jumlah * $detailSetoran->sampah->harga, 0, ',', '.') }}
                                             </td>
                                             <td>
                                                 
-                                                <a class="btn btn-sm btn-warning" title="Edit Detail Transaksi" data-bs-toggle="modal" data-bs-target="#editModal{{$detailTransaksi->id}}"><i class="icon-pencil"></i></a>
+                                                <a class="btn btn-sm btn-warning" title="Edit Detail Setoran" data-bs-toggle="modal" data-bs-target="#editModal{{$detailSetoran->id}}"><i class="icon-pencil"></i></a>
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="editModal{{$detailTransaksi->id}}" tabindex="-1"
-                                                    aria-labelledby="editModalLabel{{$detailTransaksi->id}}" aria-hidden="true">
+                                                <div class="modal fade" id="editModal{{$detailSetoran->id}}" tabindex="-1"
+                                                    aria-labelledby="editModalLabel{{$detailSetoran->id}}" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
-                                                            <form method="POST" action="{{route('detail_transaksi.update', $detailTransaksi->id)}}">
+                                                            <form method="POST" action="{{route('detail_setoran.update', $detailSetoran->id)}}">
                                                             @csrf
                                                             @method('PUT')
-                                                            <input type="hidden" name="transaksi_id" value="{{$detailTransaksi->transaksi_id}}">
+                                                            <input type="hidden" name="setoran_id" value="{{$detailSetoran->setoran_id}}">
                                                             <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="editModalLabel{{$detailTransaksi->id}}">Edit Item Transaksi</h1>
+                                                                <h1 class="modal-title fs-5" id="editModalLabel{{$detailSetoran->id}}">Edit Item Transaksi</h1>
                                                                 <button type="button" class="btn-close"
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
@@ -165,8 +198,8 @@ $userRole = Auth::user()->role;
                                                                             <label for="editSampahSelect" class="col-sm-3 col-form-label">Sampah</label>
                                                                             <div class="col-sm-9">
                                                                                 <select class="form-control" id="editSampahSelect" name="sampah_id">
-                                                                                    @foreach($sampahArray as $sampah)
-                                                                                    <option value="{{$sampah->id}}" {{ $detailTransaksi->sampah->id == $sampah->id? 'selected':''}}>{{$sampah->nama}}</option>
+                                                                                    @foreach($arraySampah as $sampah)
+                                                                                    <option value="{{$sampah->id}}" {{ $detailSetoran->sampah->id == $sampah->id? 'selected':''}}>{{$sampah->nama}}</option>
                                                                                     @endforeach
                                                                                 </select>
                                                                             </div>
@@ -176,7 +209,7 @@ $userRole = Auth::user()->role;
                                                                         <div class="form-group row">
                                                                             <label for="editJumlah" class="col-sm-3 col-form-label">Jumlah</label>
                                                                             <div class="col-sm-9">
-                                                                                <input type="number" class="form-control" name="jumlah" id="editJumlah" value="{{$detailTransaksi->jumlah}}">
+                                                                                <input type="number" class="form-control" name="jumlah" id="editJumlah" value="{{$detailSetoran->jumlah}}">
                                                                             </div>
                                                                           </div>
                                                                     </div>
@@ -193,10 +226,10 @@ $userRole = Auth::user()->role;
                                                     </div>
                                                 </div>
                                                 @if ($userRole == "admin" || $userRole == "manager")
-                                                <form method="POST" action="{{ route('detail_transaksi.destroy', $detailTransaksi->id) }}" style="all:unset">
+                                                <form method="POST" action="{{ route('detail_setoran.destroy', $detailSetoran->id) }}" style="all:unset">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" title="Hapus Detail Transaksi"
+                                                    <button type="submit" title="Hapus Detail Setoran"
                                                         class="btn btn-sm btn-danger"
                                                         onclick="return confirm('Anda yakin ingin menghapus data?')">
                                                         <i class="icon-trash"></i>
@@ -216,12 +249,12 @@ $userRole = Auth::user()->role;
                                         aria-labelledby="createModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
-                                                <form method="POST" action="{{route('detail_transaksi.store')}}">
+                                                <form method="POST" action="{{route('detail_setoran.store')}}">
                                                 @csrf
                                                 @method('POST')
-                                                <input type="hidden" name="transaksi_id" value="{{$detailTransaksi->transaksi_id}}">
+                                                <input type="hidden" name="setoran_id" value="{{$detailSetoran->setoran_id}}">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="createModalLabel">Tambah Item Transaksi</h1>
+                                                    <h1 class="modal-title fs-5" id="createModalLabel">Tambah Item setoran</h1>
                                                     <button type="button" class="btn-close"
                                                         data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
@@ -233,7 +266,7 @@ $userRole = Auth::user()->role;
                                                                 <div class="col-sm-9">
                                                                     <select class="form-control" id="tambahSampahSelect" name="sampah_id">
                                                                         <option>- Pilih Sampah -</option>
-                                                                        @foreach($sampahArray as $sampah)
+                                                                        @foreach($arraySampah as $sampah)
                                                                         <option value="{{$sampah->id}}">{{$sampah->nama}}</option>
                                                                         @endforeach
                                                                     </select>
@@ -264,6 +297,7 @@ $userRole = Auth::user()->role;
                             </tfoot>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
             <div class="row mt-3">

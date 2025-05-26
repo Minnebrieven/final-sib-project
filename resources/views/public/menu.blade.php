@@ -12,7 +12,7 @@
             <p>
                 Sampah merupakan permasalahan yang sangat umum yang terjadi di masyarakat global.
                 Sampah merupakan material sisa hasil aktivitas yang dibuang sebagai hasil dari proses produksi, baik itu dalam industri maupun rumah tangga.
-                Dapat dikatakan sampah adalah sesuatu yang tidak diinginkan oleh manusia setelah proses dan penggunaannya berakhir..
+                Dapat dikatakan sampah adalah sesuatu yang tidak diinginkan oleh manusia setelah proses dan penggunaannya berakhir.
             </p>
         </div>
 
@@ -42,7 +42,7 @@
             </div>
 
             <div class="col-lg-6 col-md-6">
-                <a href="{{route('transaksiku.create')}}" style="all:unset">
+                <a href="{{route('setoran.create')}}" style="all:unset">
                 <div class="icon-box">
                     <div class="icon"><i class="fas fa-dollar-sign"></i></div>
                     <h4><a href="">Penjualan</a></h4>

@@ -2,7 +2,7 @@
 @section('content')
     @php
         $no = 1;
-        $arrayTitle = ['No.', 'Kategori Berita', 'Tanggal Dibuat', 'ACTIONS'];
+        $arrayTitle = ['No.', 'Jenis Sampah', 'Tanggal Dibuat', 'ACTIONS'];
         $userRole = Auth::user()->role;
     @endphp
     <div class="row">

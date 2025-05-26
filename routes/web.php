@@ -3,14 +3,22 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\SampahController;
+use App\Http\Controllers\SetoranController;
+use App\Http\Controllers\PenarikanController;
 use App\Http\Controllers\MetodePembayaranController;
-use App\Http\Controllers\DetailTransaksiController;
+use App\Http\Controllers\DetailSetoranController;
 use App\Http\Controllers\JenisSampahController;
+use App\Http\Controllers\KategoriSampahController;
 use App\Http\Controllers\KategoriBeritaController;
 use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\TransaksiUserController;
+use App\Http\Controllers\LogTransaksiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\PertanyaanController;
+use App\Http\Controllers\HadiahController;
+use App\Http\Controllers\PenukaranController;
+use App\Http\Controllers\ScoreboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,22 +53,48 @@ Route::get('/berita-pdf', [BeritaController::class, 'beritaPDF']);
 
 Route::resource('/berita', BeritaController::class)->middleware('peran:admin-manager-staff');
 Route::resource('/sampah', SampahController::class)->middleware('peran:admin-manager-staff');
-Route::resource('/detail_transaksi', DetailTransaksiController::class)->middleware('peran:admin-manager-staff');
 Route::resource('/jenissampah', JenisSampahController::class)->middleware('peran:admin-manager-staff');
+Route::resource('/kategorisampah', KategoriSampahController::class)->middleware('peran:admin-manager-staff');
 Route::resource('/kategoriberita', KategoriBeritaController::class)->middleware('peran:admin-manager-staff');
 Route::resource('/transaksi', TransaksiController::class)->middleware('peran:admin-manager-staff');
+Route::post('/transaksi/konfirmasi/{id}', [TransaksiController::class, 'konfirmasi_transaksi'])->middleware('peran:admin-manager-staff')->name('transaksi.konfirmasi');
+Route::resource('/detail_setoran', DetailSetoranController::class)->middleware('peran:admin-manager-staff');
 Route::resource('/metode_pembayaran', MetodePembayaranController::class)->middleware('peran:admin-manager-staff');
-Route::resource('/transaksiku', TransaksiUserController::class)->middleware('auth');
+Route::resource('/hadiah', HadiahController::class)->middleware('peran:admin-manager-staff');
+Route::resource('/penukaran', PenukaranController::class)->middleware('peran:admin-manager-staff');
 
-Route::get('/news', [BeritaController::class, 'news']);
-Route::get('/news/{id}', [BeritaController::class, 'showNews']);
+Route::get('/setoran/create', [SetoranController::class, 'create'])->middleware('auth')->name('setoran.create');
+Route::post('/setoran/store', [SetoranController::class, 'store'])->middleware('auth')->name('setoran.store');
 
+Route::get('/penarikan/create', [PenarikanController::class, 'create'])->middleware('auth')->name('penarikan.create');
+Route::post('/penarikan/store', [PenarikanController::class, 'store'])->middleware('auth')->name('penarikan.store');
 
+Route::get('/transaksiku', [LogTransaksiController::class, 'index'])->middleware('auth')->name('transaksiku');
+Route::post('/transaksiku/store', [LogTransaksiController::class, 'store'])->middleware('auth')->name('transaksiku.store');
+Route::get('/transaksiku/setoran/{id}', [LogTransaksiController::class, 'show_setoran'])->middleware('auth')->name('transaksiku.show.setoran');
+Route::get('/transaksiku/penarikan/{id}', [LogTransaksiController::class, 'show_penarikan'])->middleware('auth')->name('transaksiku.show.penarikan');
 
-/*Route::get('/', function () {
-    return view('welcome');
+Route::get('/news', [BeritaController::class, 'news'])->name('berita.list');
+Route::get('/news/{id}', [BeritaController::class, 'showNews'])->name('berita.detail');
+
+Route::resource('quiz', QuizController::class);
+Route::get('quiz/{quiz}/pertanyaan/create', [PertanyaanController::class, 'create'])->name('pertanyaan.create');
+Route::post('quiz/{quiz}/pertanyaan', [PertanyaanController::class, 'store'])->name('pertanyaan.store');
+
+// Route Hadiah & Penarikan
+Route::get('/list-hadiah', [HadiahController::class, 'halamanListHadiah'])->name('hadiah.list')->middleware('auth');
+Route::get('/penukaran/log/{id}', [PenukaranController::class, 'log_penukaran'])->name('penukaran.log')->middleware('auth');
+Route::get('/penukaran/detail/{id}', [PenukaranController::class, 'detail_penukaran'])->name('penukaran.detail')->middleware('auth');
+Route::post('/penukaran/tukar/{id}', [PenukaranController::class, 'tukar_hadiah'])->name('penukaran.tukar_hadiah')->middleware('auth');
+// admin
+Route::post('/penukaran/konfirmasi/{id}', [PenukaranController::class, 'konfirmasi_penukaran'])->middleware('peran:admin-manager-staff')->name('penukaran.konfirmasi');
+//scoreboard
+Route::get('/scoreboard', [ScoreboardController::class, 'index'])->name('scoreboard.index');
+
+Route::get('', function () {
+    return view('public.home');
 });
-*/
+
 
  Route::get('/', function () {
      return view('public.home');

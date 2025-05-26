@@ -64,15 +64,15 @@
                 </div>
                 <div class="d-md-flex row m-0 quick-action-btns" role="group" aria-label="Quick action buttons">
                     <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                        <button class="btn px-0" {{ Auth::user()->role != 'admin'? 'disabled':'' }}> <i class="icon-user mr-2"></i>Tambah User</button>
+                        <button class="btn px-0" {{ Auth::user()->role != 'admin'? 'disabled':'' }}> <i class="icon-user mr-2"></i>Aktivasi User</button>
                     </div>
                     <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                        <button onclick="location.href = '{{ route('jenissampah.create') }}';" class="btn px-0" {{ Auth::user()->role == 'admin'? '':'disabled' }}><i
-                                class="icon-docs mr-2"></i>Tambah Jenis Sampah</button>
+                        <button onclick="location.href = '{{ route('sampah.create') }}';" class="btn px-0" {{ Auth::user()->role == 'admin'? '':'disabled' }}><i
+                                class="icon-docs mr-2"></i>Tambah Sampah</button>
                     </div>
                     <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
                         <button onclick="location.href = '{{ route('transaksi.create') }}';" class="btn px-0" {{ Auth::user()->role == 'admin' || 'manager' || 'staff' ? '':'disabled' }}><i
-                                class="icon-folder mr-2"></i>Tambah Transaksi</button>
+                                class="icon-folder mr-2"></i>Konfirmasi Transaksi</button>
                     </div>
                     <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
                         <button onclick="location.href = '{{ route('berita.create') }}';" class="btn px-0" {{ Auth::user()->role == 'admin' || 'manager' || 'staff'? '':'disabled' }}><i
@@ -95,37 +95,47 @@
                         </div>
                     </div>
                     <div class="row report-inner-cards-wrapper">
-                        <div class=" col-md-3 col-xl report-inner-card">
+                        <div class=" col-md-2 col-xl report-inner-card">
                             <div class="inner-card-text">
-                                <span class="report-title">Total Transaksi Jual</span>
-                                <h4>Rp. {{ number_format($reportSummary['totalHargaTransaksiJual'], 2, ',', '.') }}</h4>
+                                <span class="report-title">Total Transaksi Setor</span>
+                                <h4>Rp. {{ number_format($reportSummary['totalHargaTransaksiSetor'], 2, ',', '.') }}</h4>
+                                
                             </div>
                             <div class="inner-card-icon bg-danger">
                                 <i class="icon-chart"></i>
                             </div>
                         </div>
-                        <div class=" col-md-3 col-xl report-inner-card">
+                        <div class=" col-md-2 col-xl report-inner-card">
                             <div class="inner-card-text">
-                                <span class="report-title">Total Transaksi Beli</span>
-                                <h4>Rp. {{ number_format($reportSummary['totalHargaTransaksiBeli'], 2, ',', '.') }}</h4>
+                                <span class="report-title">Total Transaksi Penarikan</span>
+                                <h4>Rp. {{ number_format($reportSummary['totalHargaTransaksiTarik'], 2, ',', '.') }}</h4>
                             </div>
                             <div class="inner-card-icon bg-success">
                                 <i class="icon-rocket"></i>
                             </div>
                         </div>
-                        <div class="col-md-3 col-xl report-inner-card">
+                        <div class="col-md-2 col-xl report-inner-card">
                             <div class="inner-card-text">
-                                <span class="report-title">Jumlah Transaksi</span>
-                                <h4>{{ $reportSummary['jumlahTransaksi'] }}</h4>
+                                <span class="report-title">Transaksi Belum Diterima</span>
+                                <h4>{{ $reportSummary['jumlahTransaksiBelumDiterima'] }}</h4>
                             </div>
                             <div class="inner-card-icon bg-danger">
                                 <i class="icon-briefcase"></i>
                             </div>
                         </div>
-                        <div class="col-md-3 col-xl report-inner-card">
+                        <div class="col-md-2 col-xl report-inner-card">
                             <div class="inner-card-text">
-                                <span class="report-title">Sampah Terkumpul</span>
-                                <h4>{{ $reportSummary['totalSampah'] }}</h4>
+                                <span class="report-title">Transaksi Diterima</span>
+                                <h4>{{ $reportSummary['jumlahTransaksiDiterima'] }}</h4>
+                            </div>
+                            <div class="inner-card-icon bg-warning">
+                                <i class="icon-globe-alt"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xl report-inner-card">
+                            <div class="inner-card-text">
+                                <span class="report-title">Transaksi Ditolak</span>
+                                <h4>{{ $reportSummary['jumlahTransaksiDitolak'] }}</h4>
                             </div>
                             <div class="inner-card-icon bg-warning">
                                 <i class="icon-globe-alt"></i>
@@ -232,11 +242,11 @@
                             </thead>
                             <tbody>
                                 @foreach ($transactionData['data'] as $transaksi)
-                                    <tr>
-                                    <td>{{ ucfirst($transaksi->tipe_transaksi) }}</td>
-                                    <td>{{ $transaksi->user->name }}</td>
-                                    <td>Rp. {{ number_format($transaksi->total_harga, 0, ',', '.') }}</td>
-                                    <td><label class="badge {{ $transaksi->status_bayar == 'sudah bayar' ? 'badge-success' : 'badge-danger' }}">{{ ucwords($transaksi->status_bayar) }}</label></td>
+                                <tr>
+                                    <td>{{ (!empty($transaksi->setoran_id) ? 'Setor': 'Tarik') }}</td>
+                                    <td>{{ $transaksi->rekening->user->name }}</td>
+                                    <td>Rp. {{ (!empty($transaksi->setoran_id) ? number_format($transaksi->setoran->total_harga, 0, ',', '.') : number_format($transaksi->penarikan->total_harga, 0, ',', '.')) }}</td>
+                                    <td><label class="badge {{ $transaksi->status == 'diterima' ? 'badge-success' : ($transaksi->status == 'belum diterima' ? 'badge-warning' : 'badge-danger') }}">{{ ucwords($transaksi->status) }}</label></td>
                                     <td>{{ $transaksi->created_at->toDayDateTimeString() }}</td>
                                 </tr>
                                 @endforeach

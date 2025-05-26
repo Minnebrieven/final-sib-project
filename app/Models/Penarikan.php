@@ -7,22 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-
-class Transaksi extends Model
+class Penarikan extends Model
 {
     use HasFactory;
-    protected $table = 'transaksi';
+    protected $table = 'Penarikan';
     protected $fillable = [
-        'user_id',
-        'tipe_transaksi',
-        'metode_pembayaran_id',
-        'status_bayar',
-        'total_harga'
+        'rekening_id',
+        'total_harga',
+        'metode_pembayaran_id'
     ];
 
-    public function user(): BelongsTo
+    public function rekening(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Rekening::class);
     }
 
     public function metode_pembayaran(): BelongsTo
@@ -30,8 +27,8 @@ class Transaksi extends Model
         return $this->belongsTo(MetodePembayaran::class);
     }
 
-    public function detail_transaksi(): HasMany
+    public function log_transaksi(): HasMany
     {
-        return $this->hasMany(DetailTransaksi::class);
+        return $this->hasMany(LogTransaksi::class);
     }
 }
