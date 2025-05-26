@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaksi', function (Blueprint $table) {
+        Schema::create('quiz_attempt', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained(
-                table: 'users', indexName: 'user_transaksi_id'
+            $table->foreignId('quiz_id')->constrained(
+                table: 'quiz', indexName: 'quiz_attempt_pertanyaan_id'
             )->onUpdate('cascade')->onDelete('cascade');
-            $table->enum('tipe_transaksi', ['jual', 'beli']);
-            $table->foreignId('metode_pembayaran_id')->constrained(
-                table: 'metode_pembayaran', indexName: 'transaksi_metode_pembayaran_id'
+            $table->foreignId('rekening_id')->constrained(
+                table: 'rekening', indexName: 'quiz_rekening_id'
             )->onUpdate('cascade')->onDelete('cascade');
-            $table->enum('status_bayar', ['belum bayar', 'sudah bayar'])->default('belum bayar');
-            $table->double('total_harga', 8, 2);
+            $table->enum('status',['belum selesai', 'selesai'])->default('belum selesai');
+            $table->integer('score');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaksi');
+        Schema::dropIfExists('quiz_attempt');
     }
 };

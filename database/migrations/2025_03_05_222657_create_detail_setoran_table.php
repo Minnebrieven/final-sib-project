@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('detail_transaksi', function (Blueprint $table) {
+        Schema::create('detail_setoran', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('transaksi_id')->constrained(
-                table: 'transaksi', indexName: 'transaksi_detail_id'
+            $table->foreignId('setoran_id')->constrained(
+                table: 'setoran', indexName: 'setoran_detail_id'
             )->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('sampah_id')->constrained(
-                table: 'sampah', indexName: 'detail_transaksi_sampah_id'
+                table: 'sampah', indexName: 'detail_setoran_sampah_id'
             )->onUpdate('cascade')->onDelete('cascade');
             $table->integer('jumlah');
             $table->timestamp('created_at')->useCurrent();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detail_transaksi');
+        Schema::dropIfExists('detail_setoran');
     }
 };

@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sampah', function (Blueprint $table) {
+        Schema::create('rekening', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->foreignId('jenis_sampah_id')->constrained(
-                table: 'jenis_sampah', indexName: 'sampah_jenis_id'
+            $table->foreignId('user_id')->constrained(
+                table: 'users', indexName: 'user_id'
             )->onUpdate('cascade')->onDelete('cascade');
-            $table->string('satuan');
-            $table->double('harga', 8, 3);
+            $table->string('nomor_rekening');
+            $table->double('saldo', 8, 3);
+            $table->integer('score')->default(0);
+            $table->integer('coin')->default(0);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sampahs');
+        Schema::dropIfExists('rekening');
     }
 };

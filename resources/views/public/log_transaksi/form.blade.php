@@ -4,8 +4,8 @@
         <div class="container">
             
             <div class="section-title">
-                <h2>Jual/Beli Sampah</h2>
-                <p>Isi Form dibawah untuk menjual atau membeli sampah melalui platform kami.</p>
+                <h2>Setor Sampah</h2>
+                <p>Isi Form dibawah untuk setor sampah melalui platform kami.</p>
             </div>
 
             <div class="row">
@@ -21,12 +21,19 @@
                     @endif
                 </div>
             </div>
-
-            <form method="POST" action="{{ route('transaksiku.store') }}" role="form">
+            @if (empty(Auth::user()->rekening[0]))
+                <div class="alert alert-danger">
+                    <ul>
+                        <li>Error! Rekening belum dibuat. Hubungi staff/admin untuk membuat rekening</li>
+                    </ul>
+                </div>
+            @else
+            <form method="POST" action="{{ route('setoran.store') }}" role="form">
                 @csrf
                 @method('POST')
-                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                <div class="row">
+                
+                <input type="hidden" name="rekening_id" value="{{ Auth::user()->rekening[0]->id }}">
+                {{-- <div class="row">
                     <div class="col-md-6 form-group">
                         <select name="tipe_transaksi" id="tipe_transaksi" class="form-select" required>
                             <option>Pilih Tipe Transaksi</option>
@@ -44,17 +51,17 @@
                         </select>
                         <div class="validate"></div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="row" id="containerSampah">
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-8 form-group mt-3">
                                 <select name="sampah[0][sampah_id]" class="form-select" id="selectSampah" onchange="ubahInputHargaHidden(this, 'inputHiddenHarga0')">
                                     <option>Pilih Sampah</option>
-                                    @foreach ($arrayJenisSampah as $jenisSampah)
-                                        <optgroup label="{{ $jenisSampah->nama }}">
+                                    @foreach ($arrayKategoriSampah as $kategoriSampah)
+                                        <optgroup label="{{ $kategoriSampah->nama }}">
                                             @foreach ($arraySampah as $sampah)
-                                                @if ($sampah->jenis_sampah_id == $jenisSampah->id)
+                                                @if ($sampah->kategori_sampah_id == $kategoriSampah->id)
                                                     <option value="{{ $sampah->id }}">{{ $sampah->nama }} - {{ $sampah->harga }}/{{ $sampah->satuan }}</option>
                                                 @endif
                                             @endforeach
@@ -72,7 +79,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 mt-3">
-                        <h5 class="float-end">Total Harga : <p>Rp. 0</p>
+                        <h5 class="float-end">Total Harga : <p id="grand-total">Rp. 0</p>
                         </h5>
                     </div>
                 </div>
@@ -83,10 +90,11 @@
                 </div>
                 <br>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Jual / Beli Sampah</button>
+                    <button type="submit" class="btn btn-primary">Setor</button>
                     <button type="reset" class="btn btn-secondary">Reset</button>
                 </div>
             </form>
+            @endif
         </div>
         </div>
     </section>
@@ -114,10 +122,10 @@
                                 <div class="col-md-8 form-group mt-3">
                                     <select name="sampah[`+x+`][sampah_id]" class="form-select" id="selectSampah` + x + `" onchange="ubahInputHargaHidden(this, 'inputHiddenHarga`+x+`')">
                                         <option>Pilih Sampah</option>` +
-                                        @foreach ($arrayJenisSampah as $jenisSampah)
-                                            `<optgroup label="{{ $jenisSampah->nama }}">` +
+                                        @foreach ($arrayKategoriSampah as $kategoriSampah)
+                                            `<optgroup label="{{ $kategoriSampah->nama }}">` +
                                             @foreach ($arraySampah as $sampah)
-                                                @if ($sampah->jenis_sampah_id == $jenisSampah->id)
+                                                @if ($sampah->kategori_sampah_id == $kategoriSampah->id)
                                                     `<option value="{{ $sampah->id }}">{{ $sampah->nama }} - {{ $sampah->harga }}/{{ $sampah->satuan }}</option>
                                                     ` +
                                                 @endif
@@ -162,6 +170,8 @@
             function kalkulasiHarga() {
                 i = x;
                 
+
+
                 var totalHarga;
                 while (x <= max_fields) {
                     totalHarga = $('#selectSampah')

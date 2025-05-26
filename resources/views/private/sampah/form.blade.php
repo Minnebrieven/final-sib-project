@@ -19,14 +19,14 @@
                         @csrf
                         <div class="form-group">
                             <label for="inputNama">Nama Sampah</label>
-                            <input type="text" class="form-control" id="inputNama" name="nama" placeholder="Botol Plastik">
+                            <input type="text" class="form-control" id="inputNama" name="nama" placeholder="nama sampah">
                         </div>
                         <div class="form-group">
-                            <label for="selectJenisSampah">Jenis Sampah</label>
-                            <select class="form-control" id="selectJenisSampah" name="jenis_sampah_id">
-                                <option>-- Pilih Jenis Sampah --</option>
-                                @foreach ($arrayJenisSampah as $jenisSampah)
-                                    <option value="{{ $jenisSampah->id }}">{{ $jenisSampah->nama }}</option>
+                            <label for="selectKategoriSampah">Kategori Sampah</label>
+                            <select class="form-control" id="selectKategoriSampah" name="kategori_sampah_id">
+                                <option>-- Pilih Kategori Sampah --</option>
+                                @foreach ($arrayKategoriSampah as $kategoriSampah)
+                                    <option value="{{ $kategoriSampah->id }}">{{ $kategoriSampah->nama }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -40,6 +40,27 @@
                                         </div>
                                         <input type="number" class="form-control" id="inputHarga" name="harga"
                                             placeholder="500">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="inputScore">Score</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="inputScore" name="score"
+                                            placeholder="500">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="inputCoin">Coin</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="inputCoin" name="coin"
+                                            placeholder="500">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">TC</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

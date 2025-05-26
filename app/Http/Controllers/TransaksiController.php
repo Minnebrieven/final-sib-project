@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaksi;
-use App\Models\DetailTransaksi;
-use App\Models\Sampah; //panggil model
-use App\Models\JenisSampah; //panggil model
-use App\Models\MetodePembayaran; //panggil model
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // jika pakai query builder
 use Illuminate\Database\Eloquent\Model;
-use PDF;
+
+use App\Models\LogTransaksi;
+use App\Models\Sampah;
+use App\Models\MetodePembayaran;
 
 class TransaksiController extends Controller
 {
@@ -19,8 +18,8 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $arrayTransaksi = Transaksi::with('user')->orderBy('created_at', 'DESC')->get();//eloquent
-        return view('private.transaksi.index', compact('arrayTransaksi'));
+        $arrayLogTransaksi = LogTransaksi::all();
+        return view('private.transaksi.index', compact('arrayLogTransaksi'));
     }
 
     /**
@@ -28,7 +27,7 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -44,9 +43,9 @@ class TransaksiController extends Controller
      */
     public function show(string $id)
     {
-        $sampahArray = Sampah::all();
-        $transaksi = Transaksi::with('detail_transaksi.sampah')->find($id);
-        return view('private.transaksi.detail',compact('transaksi','sampahArray'));
+        $arraySampah = Sampah::all();
+        $logTransaksi = LogTransaksi::with('setoran.detail_setoran.sampah', 'penarikan')->find($id);
+        return view('private.transaksi.detail', compact('arraySampah', 'logTransaksi'));
     }
 
     /**
@@ -55,8 +54,8 @@ class TransaksiController extends Controller
     public function edit(string $id)
     {
         $arrayMetodePembayaran = MetodePembayaran::all();
-        $transaksi = Transaksi::with('metode_pembayaran', 'user')->find($id);
-        return view('private.transaksi.form_edit', compact('transaksi', 'arrayMetodePembayaran'));
+        $logTransaksi = LogTransaksi::with('setoran', 'penarikan')->find($id);
+        return view('private.transaksi.form_edit', compact('arrayMetodePembayaran', 'logTransaksi'));
     }
 
     /**
@@ -67,35 +66,42 @@ class TransaksiController extends Controller
         $validated = $request->validate(
             // column to validate and rules
             [
-                'user_id' => 'required|integer',
-                'tipe_transaksi' => 'required|string',
-                'metode_pembayaran_id' => 'required|integer',
-                'status_bayar' => 'required|string',
-                'total_harga' => 'required|between:0,99.99',
+
+                // 'user_id' => 'required|integer',
+                // 'tipe_transaksi' => 'required|string',
+                'metode_pembayaran_id' => 'integer',
+                'status' => 'required|string',
+                // 'total_harga' => 'required|between:0,99.99',
             ],
 
             //column custom errors
             [
-                'user_id.required' => 'wajib login agar dapat mengakses fitur ini',
-                'user_id.integer' => 'wajib login agar dapat mengakses fitur ini',
-                'metode_pembayaran_id.required' => 'metode pembayaran wajib diisi',
+                // 'user_id.required' => 'wajib login agar dapat mengakses fitur ini',
+                // 'user_id.integer' => 'wajib login agar dapat mengakses fitur ini',
+                // 'metode_pembayaran_id.required' => 'metode pembayaran wajib diisi',
                 'metode_pembayaran_id.integer' => 'satuan wajib berupa id metode pembayaran',
-                'status_bayar.required' => 'wajib pilih status_bayar',
-                'status_bayar.string' => 'status_bayar harus berupa string/huruf',
-                'total_harga.required' => 'total harga wajib diisi',
+                'status.required' => 'wajib pilih status',
+                'status.string' => 'status harus berupa string/huruf',
+                // 'total_harga.required' => 'total harga wajib diisi',
             ]);
             //lakukan insert data dari request form dgn query builder
         try {
             $now = DB::raw('CURRENT_TIMESTAMP');
+            $isSetoran = $request->tipeTransaksi == 'setoran';
             
-            DB::table('transaksi')->where('id',$id)->update([
-                'user_id' => $request->user_id,
-                'tipe_transaksi' => $request->tipe_transaksi,
-                'metode_pembayaran_id' => $request->metode_pembayaran_id,
-                'status_bayar' => $request->status_bayar,
-                'total_harga' => $request->total_harga,
-                'updated_at' => $now
-            ]);
+            if ($isSetoran) {
+                DB::table('log_transaksi')->where('id',$id)->update([
+                    'metode_pembayaran_id' => $request->metode_pembayaran_id,
+                    'status' => $request->status,
+                    'updated_at' => $now
+                ]);
+            } else {
+                DB::table('log_transaksi')->where('id',$id)->update([
+                    'status' => $request->status,
+                    'updated_at' => $now
+                ]);
+            }
+
             return redirect()->route('transaksi.show', $id)
                 ->with('success', 'transaksi berhasil diubah ID:'.$id);
 
@@ -111,34 +117,58 @@ class TransaksiController extends Controller
      */
     public function destroy(string $id)
     {
-        try {
-            $transaksi = Transaksi::find($id);
-            $transaksi->delete();
-            return redirect()->back()
-                    ->with('success', 'transaksi berhasil dihapus');
-
-        } catch (\Exception $e) {
-            return redirect()->back()
-                    ->with('error', 'terjadi error saat hapus transaksi! \nError: '.$e->getMessage());
-        }
+        //
     }
 
-    public function generatePDF()
+    public function konfirmasi_transaksi(string $id)
     {
-        $data = [
-            'title' => 'Data Transaksi',
-            'date' => date('d-m-Y H:i:s')
-        ];
-          
-        $pdf = PDF::loadView('private.transaksi.tesPDF', $data);
-    
-        return $pdf->download('data_tespdf_'.date('d-m-Y_H:i:s').'.pdf');
-    }
+        $tipeTransaksi = "";
+        try {
+            $logTransaksi = LogTransaksi::find($id);
+            
+            if (!empty($logTransaksi->setoran_id) && (empty($logTransaksi->penarikan_id))) {
+                $tipeTransaksi = 'setoran';
+            } elseif (!empty($logTransaksi->penarikan_id) && (empty($logTransaksi->setoran_id))) {
+                $tipeTransaksi = 'penarikan';
+            } else {
+                return redirect()->route('transaksi.index')
+                ->withErrors(['msg' => 'Tipe Transaksi Salah! Tidak ada tipe transaksi yang terpilih.']);
+            }
 
-    public function transaksiPDF(){
-        $ar_transaksi = transaksi::all();
-        $pdf = PDF::loadView('private.transaksi.transaksiPDF', 
-                              ['ar_transaksi'=>$ar_transaksi]);
-        return $pdf->download('data_transaksi_'.date('d-m-Y_H:i:s').'.pdf');
+            switch ($tipeTransaksi) {
+                case 'setoran':
+                    //tambah saldo ke rekening
+                    $logTransaksi->rekening->increment('saldo', $logTransaksi->setoran->total_harga);
+                    $logTransaksi->rekening->increment('score', $logTransaksi->setoran->total_score);
+                    $logTransaksi->rekening->increment('coin', $logTransaksi->setoran->total_coin);
+                    break;
+                
+                case 'penarikan':
+                    // cek saldo mencukupi atau tidak
+                    if ($logTransaksi->rekening->saldo < $logTransaksi->penarikan->total_harga) {
+                        return redirect()->route('transaksi.index')
+                        ->withErrors(['msg' => 'Penarikan Gagal! Saldo yang ditarik tidak mencukupi.']);
+                    } else {
+                    //kurangi saldo dari rekening 
+                    $logTransaksi->rekening->decrement('saldo', $logTransaksi->penarikan->total_harga);   
+                    }
+                    break;
+                
+                default:
+                    return redirect()->route('transaksi.index')
+                    ->withErrors(['msg' => 'Transaksi Gagal! terjadi kegagalan dalam konfirmasi transaksi.']);
+                    break;
+            }
+
+            $logTransaksi->status = 'diterima';
+            $logTransaksi->save();
+
+            return redirect()->route('transaksi.show', $id)
+                ->with('success', 'transaksi berhasil dikonfirmasi!');
+        } catch (\Exception $e) {
+            //return redirect()->back()
+            return redirect()->route('transaksi.index')
+                ->with('error', 'Terjadi Kesalahan konfirmasi transaksi! \n Error: '.$e->getMessage());
+        }
     }
 }

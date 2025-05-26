@@ -8,19 +8,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
-class DetailTransaksi extends Model
+class DetailSetoran extends Model
 {
     use HasFactory;
-    protected $table = 'detail_transaksi';
+    protected $table = 'detail_setoran';
     protected $fillable = [
-        'transaksi_id',
+        'setoran_id',
         'sampah_id',
         'jumlah'
     ];
 
-    public function transaksi(): BelongsTo
+    public function setoran(): BelongsTo
     {
-        return $this->belongsTo(Transaksi::class);
+        return $this->belongsTo(Setoran::class);
     }
 
     public function sampah(): BelongsTo

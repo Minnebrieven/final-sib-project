@@ -26,7 +26,7 @@ class PenjualController extends Controller
     public function create(): View
     {
         //ambil master data kategori u/ dilooping di select option form
-        $ar_penjual =Penjual ::all();
+        $ar_penjual =Penjual::all();
         return view('private.penjual.form', compact('ar_penjual'));
     }
 

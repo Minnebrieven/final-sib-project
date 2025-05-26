@@ -19,13 +19,13 @@ class Sampah extends Model
         'harga'
     ];
 
-    public function jenis_sampah(): BelongsTo
+    public function kategori_sampah(): BelongsTo
     {
-        return $this->belongsTo(JenisSampah::class);
+        return $this->belongsTo(KategoriSampah::class);
     }
 
-    public function transaksi(): HasMany
+    public function setoran(): HasMany
     {
-        return $this->hasMany(DetailTransaksi::class);
+        return $this->hasMany(Setoran::class);
     }
 }

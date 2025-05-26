@@ -29,10 +29,34 @@
                   <i class="bi bi-newspaper menu-icon"></i>
                 </a>
               </li>
+              {{-- <li class="nav-item">
+                <a class="nav-link" href="{{route('quiz.index')}}">
+                  <span class="menu-title">Quiz</span>
+                  <i class="bi bi-newspaper menu-icon"></i>
+                </a>
+              </li> --}}
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('hadiah.index')}}">
+                  <span class="menu-title">Hadiah</span>
+                  <i class="bi bi-newspaper menu-icon"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('penukaran.index')}}">
+                  <span class="menu-title">Penukaran</span>
+                  <i class="bi bi-newspaper menu-icon"></i>
+                </a>
+              </li>
               <li class="nav-item nav-category"><span class="nav-link">Master Data</span></li>
               <li class="nav-item">
                 <a class="nav-link" href="{{route('jenissampah.index')}}">
                   <span class="menu-title">Jenis Sampah</span>
+                  <i class="icon-grid menu-icon"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('kategorisampah.index')}}">
+                  <span class="menu-title">Kategori Sampah</span>
                   <i class="icon-grid menu-icon"></i>
                 </a>
               </li>
